@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.BorderFactory;
+
 public class Login extends JFrame{
 	
 
@@ -64,19 +66,20 @@ public class Login extends JFrame{
 		pnl_left = new JPanel();
 		pnl_left.setAlignmentY(Component.TOP_ALIGNMENT);
 		pnl_left.setAlignmentX(Component.LEFT_ALIGNMENT);
-		pnl_left.setBackground(new Color(67,154,151));
+		// pnl_left.setBackground(new Color(206, 206, 206));
+		pnl_left.setBackground(Color.WHITE	);
 		pnl_left.setBounds(0,0,400,646);
 		contentPane.add(pnl_left);
 		pnl_left.setLayout(null);
 
 		//logo = new ImageIcon("/img/heart.png");
 		try{
-			BufferedImage bufferedImage = ImageIO.read(new File("../img/doctor.png"));
-			Image image = bufferedImage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+			BufferedImage bufferedImage = ImageIO.read(new File("../img/cross.png"));
+			Image image = bufferedImage.getScaledInstance(500, 500, Image.SCALE_DEFAULT);
 			ImageIcon icon = new ImageIcon(image);
 			JLabel lbl_logo = new JLabel("");
 			lbl_logo.setIcon(icon);
-			lbl_logo.setBounds(150,250,100,100);
+			lbl_logo.setBounds(-50,60,500,500);
 			pnl_left.add(lbl_logo);
 		
 		}
@@ -96,11 +99,22 @@ public class Login extends JFrame{
 		contentPane.add(pnl_right);
 		pnl_right.setLayout(null);
 
+
+		usr = new JLabel("Username");
+		usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		usr.setBounds(200, 235, 300, 33);
+		pnl_right.add(usr);
+
+		pass = new JLabel("Password");
+		pass.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		pass.setBounds(200, 310, 300, 33);
+		pnl_right.add(pass);
+
+
 		tbx_usr = new JTextPane();
+		tbx_usr.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		tbx_usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-	//	tbx_usr.setForeground(new Color(0,0,0));
-		tbx_usr.setBorder(new EmptyBorder(0, 12, 0, 0));
-		tbx_usr.setBackground(new Color(245, 235, 220));
+		tbx_usr.setOpaque(false);
 		tbx_usr.setBounds(200, 270, 300, 33);
 		pnl_right.add(tbx_usr);
 		tbx_usr.addFocusListener(new FocusAdapter(){
@@ -114,16 +128,12 @@ public class Login extends JFrame{
             }
 		});
 
-
-
-
-
 		tbx_passw = new JPasswordField();
 		tbx_passw.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-	//	tbx_passw.setForeground(new Color(214, 35, 0));
-		tbx_passw.setBorder(new EmptyBorder(0, 12, 0, 0));
-		tbx_passw.setBackground(new Color(245, 235, 220));
-		tbx_passw.setBounds(200, 320, 300, 33);
+		// tbx_passw.setBackground(new Color(245, 235, 220));
+		tbx_passw.setOpaque(false);
+		tbx_passw.setBorder(BorderFactory.createMatteBorder(0,0,2,0,Color.WHITE));
+		tbx_passw.setBounds(200, 340, 300, 33);
 		pnl_right.add(tbx_passw);
 
 		btn_login = new JButton("Login");
@@ -132,7 +142,7 @@ public class Login extends JFrame{
 		btn_login.setBorderPainted(false);
 		btn_login.setBorder(null);
 		btn_login.setBackground(new Color(21, 115, 111));
-		btn_login.setBounds(400, 370, 100, 33);
+		btn_login.setBounds(400, 390, 100, 33);
 		pnl_right.add(btn_login);
 
 		btn_signin = new JButton("Sign in");
@@ -141,7 +151,7 @@ public class Login extends JFrame{
 		btn_signin.setBorderPainted(false);
 		btn_signin.setBorder(null);
 		btn_signin.setBackground(new Color(21, 115, 111));
-		btn_signin.setBounds(200, 370, 100, 33);
+		btn_signin.setBounds(200, 390, 100, 33);
 		pnl_right.add(btn_signin);
 
 
@@ -179,6 +189,9 @@ public class Login extends JFrame{
 
 	private JTextPane tbx_usr;
 	private JPasswordField tbx_passw;
+
+	private JLabel usr;
+	private JLabel pass;
 
 	private JButton btn_login;
 	private JButton btn_signin;
