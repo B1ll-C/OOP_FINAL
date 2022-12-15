@@ -38,9 +38,33 @@ public class MainMenu extends JFrame{
 		pnl_top.setAlignmentY(Component.TOP_ALIGNMENT);
 		pnl_top.setAlignmentX(Component.LEFT_ALIGNMENT);
 		pnl_top.setBackground(new Color(67,154,151));
-		pnl_top.setBounds(0,0,1054,100);
+		pnl_top.setBounds(0,0,1054,50);
 		contentPane.add(pnl_top);
 		pnl_top.setLayout(null);
+
+		
+
+
+		//top panel end
+
+
+
+		//pnl left start
+		pnl_left = new JPanel();
+		pnl_left.setAlignmentY(Component.TOP_ALIGNMENT);
+		pnl_left.setAlignmentX(Component.LEFT_ALIGNMENT);
+		pnl_left.setBackground(new Color(110, 189, 186));
+		pnl_left.setBounds(0,50,200,596);
+		contentPane.add(pnl_left);
+		pnl_left.setLayout(null);
+
+		pnl_usr = new JPanel();
+		pnl_usr.setAlignmentY(Component.TOP_ALIGNMENT);
+		pnl_usr.setAlignmentX(Component.LEFT_ALIGNMENT);
+		pnl_usr.setBounds(0,0,200,200);
+		pnl_left.add(pnl_usr);
+		pnl_usr.setLayout(null);
+
 
 		try{
 			int size = 75;
@@ -50,7 +74,7 @@ public class MainMenu extends JFrame{
 			JLabel lbl_logo = new JLabel("");
 			lbl_logo.setIcon(icon);
 			lbl_logo.setBounds(70,5,size,size);
-			pnl_top.add(lbl_logo);
+			pnl_usr.add(lbl_logo);
 		
 		}
 		catch(Exception e){
@@ -67,57 +91,52 @@ public class MainMenu extends JFrame{
 		pnl_top.add(lbl_priv);
 		// lbl_priv.setBounds()
 
-
-		//top panel end
-
-
-
-		//pnl left start
-		pnl_left = new JPanel();
-		pnl_left.setAlignmentY(Component.TOP_ALIGNMENT);
-		pnl_left.setAlignmentX(Component.LEFT_ALIGNMENT);
-		pnl_left.setBackground(new Color(110, 189, 186));
-		pnl_left.setBounds(0,100,200,546);
-		contentPane.add(pnl_left);
-		pnl_left.setLayout(null);
-
 	
-		int y = 50;
-		btn_cc = new JButton("Consulting");
-		btn_cc.setForeground(Color.WHITE);
-		btn_cc.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_cc.setBorderPainted(false);
-		btn_cc.setBorder(null);
-		btn_cc.setBackground(new Color(21, 115, 111));
-		btn_cc.setBounds(25, 30+y, 150, 33);
-		pnl_left.add(btn_cc);
+		int y = 200;
+		btn_dash = new JButton("Dashboard");
+		btn_dash.setForeground(Color.WHITE);
+		btn_dash.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_dash.setBorderPainted(false);
+		btn_dash.setBorder(null);
+		btn_dash.setBackground(new Color(21, 115, 111));
+		btn_dash.setBounds(25, 30+y, 150, 33);
+		pnl_left.add(btn_dash);
 
-		btn_his = new JButton("Information System");
-		btn_his.setForeground(Color.WHITE);
-		btn_his.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_his.setBorderPainted(false);
-		btn_his.setBorder(null);
-		btn_his.setBackground(new Color(21, 115, 111));
-		btn_his.setBounds(25, 90+y, 150, 33);
-		pnl_left.add(btn_his);
+		btn_doc = new JButton("Doctors");
+		btn_doc.setForeground(Color.WHITE);
+		btn_doc.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_doc.setBorderPainted(false);
+		btn_doc.setBorder(null);
+		btn_doc.setBackground(new Color(21, 115, 111));
+		btn_doc.setBounds(25, 90+y, 150, 33);
+		pnl_left.add(btn_doc);
 
-		btn_cc = new JButton("Consulting");
-		btn_cc.setForeground(Color.WHITE);
-		btn_cc.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_cc.setBorderPainted(false);
-		btn_cc.setBorder(null);
-		btn_cc.setBackground(new Color(21, 115, 111));
-		btn_cc.setBounds(25, 150+y, 150, 33);
-		pnl_left.add(btn_cc);
+		btn_pat = new JButton("Patients");
+		btn_pat.setForeground(Color.WHITE);
+		btn_pat.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_pat.setBorderPainted(false);
+		btn_pat.setBorder(null);
+		btn_pat.setBackground(new Color(21, 115, 111));
+		btn_pat.setBounds(25, 150+y, 150, 33);
+		pnl_left.add(btn_pat);
 
-		btn_cc = new JButton("Consulting");
-		btn_cc.setForeground(Color.WHITE);
-		btn_cc.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_cc.setBorderPainted(false);
-		btn_cc.setBorder(null);
-		btn_cc.setBackground(new Color(21, 115, 111));
-		btn_cc.setBounds(25, 210+y, 150, 33);
-		pnl_left.add(btn_cc);
+		btn_rec = new JButton("Records");
+		btn_rec.setForeground(Color.WHITE);
+		btn_rec.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_rec.setBorderPainted(false);
+		btn_rec.setBorder(null);
+		btn_rec.setBackground(new Color(21, 115, 111));
+		btn_rec.setBounds(25, 210+y, 150, 33);
+		pnl_left.add(btn_rec);
+
+		btn_rep = new JButton("Reports");
+		btn_rep.setForeground(Color.WHITE);
+		btn_rep.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_rep.setBorderPainted(false);
+		btn_rep.setBorder(null);
+		btn_rep.setBackground(new Color(21, 115, 111));
+		btn_rep.setBounds(25, 270+y, 150, 33);
+		pnl_left.add(btn_rep);
 
 		//pnl left end
 
@@ -146,12 +165,15 @@ public class MainMenu extends JFrame{
 	private JPanel pnl_left;
 	private JPanel pnl_main;
 
+	private JPanel pnl_usr;
+
 	private JLabel lbl_priv;
 
-	private JButton btn_cc;
-	private JButton btn_his;
-	private JButton btn_ir;
-	private JButton btn_csa;
+	private JButton btn_dash;
+	private JButton btn_doc;
+	private JButton btn_pat;
+	private JButton btn_rec;
+	private JButton btn_rep;
 
 
 
