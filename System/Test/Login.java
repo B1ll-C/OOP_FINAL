@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Login extends JFrame{
-	//umay
+	
 
 	public Login(){
 		initComponents(); 
