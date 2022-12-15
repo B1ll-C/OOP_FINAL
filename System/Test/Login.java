@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Login extends JFrame{
-	
+	//umay
 
 	public Login(){
 		initComponents(); 
@@ -34,7 +34,6 @@ public class Login extends JFrame{
          tbx_usr.setText(null);
      }
 	}
-
 
 	private void initComponents(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
