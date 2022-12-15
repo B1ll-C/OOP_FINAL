@@ -37,6 +37,12 @@ public class Login extends JFrame{
      }
 	}
 
+	private void btn_login_click(){
+		priv.setPriv("admin");
+		System.out.println(priv.getPriv());
+
+	}
+
 	private void initComponents(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1054, 646);
@@ -63,7 +69,7 @@ public class Login extends JFrame{
 
 		//logo = new ImageIcon("/img/heart.png");
 		try{
-			BufferedImage bufferedImage = ImageIO.read(new File("img/heart.png"));
+			BufferedImage bufferedImage = ImageIO.read(new File("../img/doctor.png"));
 			Image image = bufferedImage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
 			ImageIcon icon = new ImageIcon(image);
 			JLabel lbl_logo = new JLabel("");
@@ -137,6 +143,13 @@ public class Login extends JFrame{
 		pnl_right.add(btn_signin);
 
 
+		btn_login.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_login_click();
+			}
+		});
+
+
 
 
 
@@ -170,6 +183,7 @@ public class Login extends JFrame{
 
 	private Image logo;
 
+	Priv priv = new Priv();
 
 
 
