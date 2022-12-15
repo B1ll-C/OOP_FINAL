@@ -39,7 +39,11 @@ public class Login extends JFrame{
 
 	private void btn_login_click(){
 		priv.setPriv("admin");
-		System.out.println(priv.getPriv());
+		p = priv.getPriv();
+		//System.out.println(priv.getPriv());
+		MainMenu m = new MainMenu();
+		m.setVisible(true);
+		this.dispose();
 
 	}
 
@@ -129,7 +133,7 @@ public class Login extends JFrame{
 		btn_login.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
 		btn_login.setBorderPainted(false);
 		btn_login.setBorder(null);
-		btn_login.setBackground(new Color(83, 32, 24));
+		btn_login.setBackground(new Color(21, 115, 111));
 		btn_login.setBounds(400, 370, 100, 33);
 		pnl_right.add(btn_login);
 
@@ -138,7 +142,7 @@ public class Login extends JFrame{
 		btn_signin.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
 		btn_signin.setBorderPainted(false);
 		btn_signin.setBorder(null);
-		btn_signin.setBackground(new Color(83, 32, 24));
+		btn_signin.setBackground(new Color(21, 115, 111));
 		btn_signin.setBounds(200, 370, 100, 33);
 		pnl_right.add(btn_signin);
 
@@ -184,6 +188,7 @@ public class Login extends JFrame{
 	private Image logo;
 
 	Priv priv = new Priv();
+	public static String p;
 
 
 
