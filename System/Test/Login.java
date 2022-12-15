@@ -25,16 +25,11 @@ public class Login extends JFrame{
 	}
 
 	private void tbx_usr_focus(){
-		if(tbx_usr.getText().isEmpty()){
-			tbx_usr.setForeground(new Color(128,128,128));
-            tbx_usr.setText("Username:");
-		}
+		
 	}
 
 	private void tbx_usr_lost(){
-		if("Username:".equals(tbx_usr.getText())){
-         tbx_usr.setText(null);
-     }
+		
 	}
 
 	private void btn_login_click(){
