@@ -19,10 +19,17 @@ public class MainMenu extends JFrame{
 
 
 	private void btn_dash_click(){	
-		
+		JPanel pek = Dash_pnl.Dash_pnl();
+		pek.setBounds(0,0,100,100);
+		pek.setBackground(Color.WHITE);
+		pnl_main.add(pek);
 
 
 	}
+	private void UwU(){
+
+				
+		}
 
 	public MainMenu(){
 		//Priv priv = new Priv();
@@ -166,17 +173,92 @@ public class MainMenu extends JFrame{
 		contentPane.add(pnl_main);
 		pnl_main.setLayout(null);
 
-		Dash_pnl p = new Dash_pnl();
-		p.setBounds(0,0,1054-200,646-50);
 
-		pnl_main.add(p);
-		//
 
+
+
+		pnl_dash 	= Dash_pnl.Dash_pnl();
+		pnl_doc 	= Doc_pnl.Doc_pnl();
+		pnl_pat		= Pat_pnl.Pat_pnl();
+		pnl_rec		= Rec_pnl.Rec_pnl();
+		pnl_rep		= Rep_pnl.Rep_pnl();
+
+		// pnl_dash.setBackground(Color.WHITE);
+		// pnl_doc.setBackground(Color.BLACK);
+		// pnl_pat.setBackground(Color.RED)
+		// pnl_rec.setBackground(Color.GREEN)
+		// pnl_rep.setBackground(Color.BLUE)
+
+		pnl_dash.setVisible(false);
+		pnl_doc.setVisible(false);
+		pnl_pat.setVisible(false);
+		pnl_rec.setVisible(false);
+		pnl_rep.setVisible(false);
+
+		pnl_main.add(pnl_dash);
+		// System.out.println(pnl_dash.isDisplayable());
+		
 
 		//Events
 		btn_dash.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				btn_dash_click();
+				pnl_dash.setVisible(true);
+				pnl_doc.setVisible(false);
+				pnl_pat.setVisible(false);
+				pnl_rec.setVisible(false);
+				pnl_rep.setVisible(false);
+				// System.out.println(pnl_dash.isDisplayable());
+
+			}
+		});
+
+		btn_doc.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				pnl_dash.setVisible(false);
+				pnl_doc.setVisible(true);
+				pnl_pat.setVisible(false);
+				pnl_rec.setVisible(false);
+				pnl_rep.setVisible(false);
+				// System.out.println(pnl_dash.isDisplayable());
+
+			}
+		});
+
+		btn_pat.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				pnl_dash.setVisible(false);
+				pnl_doc.setVisible(false);
+				pnl_pat.setVisible(true);
+				pnl_rec.setVisible(false);
+				pnl_rep.setVisible(false);
+				// System.out.println(pnl_dash.isDisplayable());
+
+			}
+		});
+
+		btn_rec.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				pnl_dash.setVisible(false);
+				pnl_doc.setVisible(false);
+				pnl_pat.setVisible(false);
+				pnl_rec.setVisible(true);
+				pnl_rep.setVisible(false);
+				// System.out.println(pnl_dash.isDisplayable());
+
+			}
+		});
+
+
+		btn_rep.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				pnl_dash.setVisible(false);
+				pnl_doc.setVisible(false);
+				pnl_pat.setVisible(false);
+				pnl_rec.setVisible(false);
+				pnl_rep.setVisible(true);
+
+				System.out.println("rep");
+
 			}
 		});
 
@@ -214,6 +296,12 @@ public class MainMenu extends JFrame{
 	private JButton btn_pat;
 	private JButton btn_rec;
 	private JButton btn_rep;
+
+	private JPanel pnl_dash;
+	private JPanel pnl_doc;
+	private JPanel pnl_pat;
+	private JPanel pnl_rec;
+	private JPanel pnl_rep;
 
 	private JLabel lbl_title;
 
