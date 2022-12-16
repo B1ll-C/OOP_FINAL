@@ -18,10 +18,9 @@ import java.io.IOException;
 public class MainMenu extends JFrame{
 
 
-	private void btn_dash_click(){
-		pnl p = new pnl();
-		p.setVisible(true);
-		// pnl_main.add(p);o
+	private void btn_dash_click(){	
+		
+
 
 	}
 
@@ -167,6 +166,10 @@ public class MainMenu extends JFrame{
 		contentPane.add(pnl_main);
 		pnl_main.setLayout(null);
 
+		Dash_pnl p = new Dash_pnl();
+		p.setBounds(0,0,1054-200,646-50);
+
+		pnl_main.add(p);
 		//
 
 
