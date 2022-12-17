@@ -182,6 +182,7 @@ public class MainMenu extends JFrame{
 
 
 		pnl_dash 	= Dash_pnl.Dash_pnl();
+		// pnl_dash 	=  Doc_pnl.Doc_pnl() ;
 		pnl_doc 	= Doc_pnl.Doc_pnl();
 		pnl_pat		= Pat_pnl.Pat_pnl();
 		pnl_rec		= Rec_pnl.Rec_pnl();
@@ -194,8 +195,12 @@ public class MainMenu extends JFrame{
 		// pnl_rep.setBackground(Color.BLUE)
 
 		
-
+		// pnl_dash.setVisible(false);
 		pnl_main.add(pnl_dash);
+		pnl_main.add(pnl_doc);
+		pnl_main.add(pnl_pat);
+		pnl_main.add(pnl_rec);
+		pnl_main.add(pnl_rep);
 		// System.out.println(pnl_dash.isDisplayable());
 		
 
@@ -215,7 +220,7 @@ public class MainMenu extends JFrame{
 				UwU();
 				pnl_doc.setVisible(true);
 				
-				// System.out.println(pnl_dash.isDisplayable());
+				// System.out.println(pnl_doc.isDisplayable());
 
 			}
 		});
