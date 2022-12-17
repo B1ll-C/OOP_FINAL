@@ -27,7 +27,11 @@ public class MainMenu extends JFrame{
 
 	}
 	private void UwU(){
-
+		pnl_dash.setVisible(false);
+		pnl_doc.setVisible(false);
+		pnl_pat.setVisible(false);
+		pnl_rec.setVisible(false);
+		pnl_rep.setVisible(false);
 				
 		}
 
@@ -189,11 +193,7 @@ public class MainMenu extends JFrame{
 		// pnl_rec.setBackground(Color.GREEN)
 		// pnl_rep.setBackground(Color.BLUE)
 
-		pnl_dash.setVisible(false);
-		pnl_doc.setVisible(false);
-		pnl_pat.setVisible(false);
-		pnl_rec.setVisible(false);
-		pnl_rep.setVisible(false);
+		
 
 		pnl_main.add(pnl_dash);
 		// System.out.println(pnl_dash.isDisplayable());
@@ -202,11 +202,9 @@ public class MainMenu extends JFrame{
 		//Events
 		btn_dash.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				UwU();
 				pnl_dash.setVisible(true);
-				pnl_doc.setVisible(false);
-				pnl_pat.setVisible(false);
-				pnl_rec.setVisible(false);
-				pnl_rep.setVisible(false);
+				
 				// System.out.println(pnl_dash.isDisplayable());
 
 			}
@@ -214,11 +212,9 @@ public class MainMenu extends JFrame{
 
 		btn_doc.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				pnl_dash.setVisible(false);
+				UwU();
 				pnl_doc.setVisible(true);
-				pnl_pat.setVisible(false);
-				pnl_rec.setVisible(false);
-				pnl_rep.setVisible(false);
+				
 				// System.out.println(pnl_dash.isDisplayable());
 
 			}
@@ -226,11 +222,9 @@ public class MainMenu extends JFrame{
 
 		btn_pat.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				pnl_dash.setVisible(false);
-				pnl_doc.setVisible(false);
+				UwU();
 				pnl_pat.setVisible(true);
-				pnl_rec.setVisible(false);
-				pnl_rep.setVisible(false);
+				
 				// System.out.println(pnl_dash.isDisplayable());
 
 			}
@@ -238,11 +232,9 @@ public class MainMenu extends JFrame{
 
 		btn_rec.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				pnl_dash.setVisible(false);
-				pnl_doc.setVisible(false);
-				pnl_pat.setVisible(false);
+				UwU();
 				pnl_rec.setVisible(true);
-				pnl_rep.setVisible(false);
+		
 				// System.out.println(pnl_dash.isDisplayable());
 
 			}
@@ -251,10 +243,7 @@ public class MainMenu extends JFrame{
 
 		btn_rep.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				pnl_dash.setVisible(false);
-				pnl_doc.setVisible(false);
-				pnl_pat.setVisible(false);
-				pnl_rec.setVisible(false);
+				UwU();
 				pnl_rep.setVisible(true);
 
 				System.out.println("rep");
