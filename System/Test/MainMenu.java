@@ -45,6 +45,7 @@ public class MainMenu extends JFrame{
 		initComponents();
 	}
 	public  void initComponents(){
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1054, 646);
 		setUndecorated(true);
