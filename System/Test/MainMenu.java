@@ -35,6 +35,10 @@ public class MainMenu extends JFrame{
 				
 		}
 
+	private void logout(){
+		this.dispose();
+	}
+
 	public MainMenu(){
 		//Priv priv = new Priv();
 		System.out.println(Login.p);
@@ -68,6 +72,14 @@ public class MainMenu extends JFrame{
 		lbl_title.setAlignmentX(Component.LEFT_ALIGNMENT);
 		lbl_title.setBounds(450,10,500,30);
 		pnl_top.add(lbl_title);
+
+		btn_logout = new JButton("Logout");
+		btn_logout.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		btn_logout.setBounds(1054-100,0,100,50);
+		btn_logout.setBackground(new Color(21, 115, 111));
+		btn_logout.setForeground(Color.WHITE);
+		pnl_top.add(btn_logout);
+
 
 
 		//top panel end
@@ -256,6 +268,12 @@ public class MainMenu extends JFrame{
 			}
 		});
 
+		btn_logout.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				logout();
+			}
+		});
+
 
 		
 		
@@ -298,6 +316,8 @@ public class MainMenu extends JFrame{
 	private JPanel pnl_rep;
 
 	private JLabel lbl_title;
+
+	private JButton btn_logout;
 
 
 
