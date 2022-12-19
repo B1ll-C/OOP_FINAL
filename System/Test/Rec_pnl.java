@@ -115,7 +115,7 @@ public class Rec_pnl extends JPanel{
 
 
 
-		pnl.add(lbl);
+		// pnl.add(lbl);
 		return pnl;
 
 	}
