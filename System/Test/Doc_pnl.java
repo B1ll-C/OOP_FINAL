@@ -6,6 +6,13 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.*;
+
+import java.awt.event.*;
+import javax.swing.table.DefaultTableModel;
+
+
+
+
 public class Doc_pnl extends JPanel{
 	public static JPanel Doc_pnl(){
 		JPanel pnl = new JPanel();
@@ -116,7 +123,14 @@ public class Doc_pnl extends JPanel{
 
 		String[] cols = {"Number","Name","Email","Month & Year","Contact"};
 
-		JTable tab = new JTable(data,cols);
+	 	DefaultTableModel model = new DefaultTableModel();
+		JTable tab = new JTable(model);
+		model.addColumn("Number");
+		model.addColumn("Name");
+		model.addColumn("Email");
+		model.addColumn("Month & Year");
+		model.addColumn("Contact");
+
 		tab.setBounds(30,40,1054-500,646-50);
 		pnl_main.add(tab);
 		pnl_main.add(new JScrollPane(tab));
@@ -124,7 +138,14 @@ public class Doc_pnl extends JPanel{
 
 
 
+		//event
 
+		btn_add.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Object[] rows = {"me","me","me","me","me"};
+				model.addRow(rows);
+			}
+		});
 		
 		return pnl;
 
