@@ -214,6 +214,7 @@ public class MainMenu extends JFrame{
 		pnl_main.add(pnl_pat);
 		pnl_main.add(pnl_rec);
 		pnl_main.add(pnl_rep);
+		UwU();
 		// System.out.println(pnl_dash.isDisplayable());
 		
 
