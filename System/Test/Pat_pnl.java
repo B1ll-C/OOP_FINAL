@@ -92,7 +92,7 @@ public class Pat_pnl extends JPanel{
         pnl.add(new JScrollPane(j));
         // pnl.add(j);
 
-	j.setDefaultEditor(Object.class, null);
+	j.setDefaultEditor(Object.class, null);        
 		return pnl;
 
 	}
