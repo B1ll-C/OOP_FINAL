@@ -46,6 +46,7 @@ public class Doc_pnl extends JPanel{
 		// JTextPane tbx_cont = new JTextPane();
 
 		JTextPane tbx_filt = new JTextPane();
+		tbx_filt.setText("Search: ");
 		JLabel lbl_filt = new JLabel("Search");
 
 
@@ -289,12 +290,12 @@ public class Doc_pnl extends JPanel{
 		tbx_filt.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e){
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
-					System.out.println(tbx_filt.getText());
+					System.out.println();
   					TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) tab.getModel())); 
   					// TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) tab.getModel()));
 					 sorter.setRowFilter(RowFilter.regexFilter(tbx_filt.getText()));
 
-				   tab.setRowSorter(sorter);
+					   tab.setRowSorter(sorter);
 					// final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
 				}
 			}
