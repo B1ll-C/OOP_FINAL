@@ -45,7 +45,7 @@ public class Doc_pnl extends JPanel{
 		// JTextPane tbx_m_y = new JTextPane();
 		// JTextPane tbx_cont = new JTextPane();
 
-		JTextPane tbx_filt = new JTextPane();
+		JTextField tbx_filt = new JTextField();
 		tbx_filt.setText("Search: ");
 		JLabel lbl_filt = new JLabel("Search");
 
