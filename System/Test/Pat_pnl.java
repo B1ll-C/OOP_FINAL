@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.*;
 import java.awt.GridLayout;
+import javax.swing.table.DefaultTableModel;
+
 public class Pat_pnl extends JPanel{
 	public static JPanel Pat_pnl(){
 		JPanel pnl = new JPanel();
@@ -19,80 +21,30 @@ public class Pat_pnl extends JPanel{
 
 		// pnl.add(lbl);
 
-		String[][] data = {
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-            { "", "", "","" },
-        };
  
         // Column Names
         String[] columnNames = { "Patient", "Room No.", "In","Out" };
- 
+        DefaultTableModel model = new DefaultTableModel();
+        JTable tab = new JTable(model);
+        model.addColumn("Patient");
+        model.addColumn("Room No.");
+        model.addColumn("In");
+        model.addColumn("Out");
         // Initializing the JTable
-        JTable j = new JTable(data, columnNames);
-        j.setBounds(30, 40, 1054-200, 646-50);
+        // JTable j = new JTable(data, columnNames);
+        tab.setBounds(30, 40, 1054-200, 646-50);
        // j.setForeground(Color.WHITE);
-        pnl.add(new JScrollPane(j));
+        pnl.add(new JScrollPane(tab));
         // pnl.add(j);
 
-	j.setDefaultEditor(Object.class, null);        
+	tab.setDefaultEditor(Object.class, null);    
+
+
+    for(int i =0; i < 10; i++){
+        Object[] rows = {"Patient#"+i,"Room#"+i,".",""};
+        model.addRow(rows);
+    }
+
 		return pnl;
 
 	}
