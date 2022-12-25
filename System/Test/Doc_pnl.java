@@ -12,8 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.*;
 
 
-
-
 public class Doc_pnl extends JPanel{
 
 	private static void cls(){
