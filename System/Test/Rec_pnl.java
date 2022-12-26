@@ -1,12 +1,18 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class Rec_pnl extends JPanel{
 	public static JPanel Rec_pnl(){
@@ -276,20 +282,68 @@ public class Rec_pnl extends JPanel{
 		submit.setBounds(25, 290	, 150, 33);
 		Panelcenter.add(submit);
 
+		JButton delete = new JButton("Delete");
+		delete.setForeground(Color.WHITE);
+		delete.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		delete.setBorderPainted(false);
+		delete.setBorder(null);
+		delete.setBackground(new Color(21, 115, 111));
+		delete.setBounds(200, 290	, 150, 33);
+		Panelcenter.add(delete);
+
+		JButton update = new JButton("Update");
+		update.setForeground(Color.WHITE);
+		update.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		update.setBorderPainted(false);
+		update.setBorder(null);
+		update.setBackground(new Color(21, 115, 111));
+		update.setBounds(380, 290	, 150, 33);
+		Panelcenter.add(update);
+
+		JButton photo = new JButton("Browse Photo");
+		photo.setForeground(Color.WHITE);
+		photo.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		photo.setBorderPainted(false);
+		photo.setBorder(null);
+		photo.setBackground(new Color(21, 115, 111));
+		photo.setBounds(560, 290	, 150, 33);
+		Panelcenter.add(photo);
+
+
 		//Table
 		JScrollPane pane = new JScrollPane();
 		pane.setBounds(20, 330, 750, 200);
 
 		JTable j = new JTable();
 		//j.setBounds(20, 330, 750, 200);
-		DefaultTableModel model = new DefaultTableModel();
+		DefaultTableModel model = new DefaultTableModel(){
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return  false;
+			}
+		};
 		Object[] column = {"PatientID", "Sex", "Age", "BloodType","LastName",
-				"FirstName", "Address", "TelNo.","EmailAddress","Height","Weight"};
+				"FirstName", "Address", "TelNo.","EmailAddress","Height","Weight","Photo"};
+
+
+		//j.getColumn(11).setCellRenderer(new myTableCellRenderer());
 		Object[] row = new Object[0];
 		model.setColumnIdentifiers(column);
+
 		j.setModel(model);
+		//j.getColumnModel().getColumn(11).setCellRenderer(new myTableCellRenderer());
 		pane.setViewportView(j);
 		Panelcenter.add(pane);
+
+
+		//Label picture
+		JLabel photolbl = new JLabel();
+		photolbl.setBounds(580,30,185,185);
+		photolbl.setBackground(Color.CYAN);
+		photolbl.setLayout(null);
+		Panelcenter.add(photolbl);
+
+
 
 		submit.addActionListener(new ActionListener() {
 			@Override
@@ -297,17 +351,151 @@ public class Rec_pnl extends JPanel{
 				if( Patienttxt.getText().equals("") || Sextxt.getText().equals("") || Agetxt.getText().equals("") || BloodType.getText().equals("") ||
 				LastName.getText().equals("") || FirstNametxt.getText().equals("") || Address.getText().equals("") || TelephoneNo.getText().equals("") ||
 				EmailAdd.getText().equals("") || Height.getText().equals("") || Weight.getText().equals("")){
-					JOptionPane.showInputDialog(this,"Fill the Fields");
+					JOptionPane.showMessageDialog(null,"Fill the Fields");
 
 				}else{
+					JLabel imagelbl = new JLabel();
+					ImageIcon imgic = new ImageIcon(selectedimgpath);
+					imagelbl.setIcon(imgic);
+
+
 					String data[] = {Patienttxt.getText(),Sextxt.getText(),Agetxt.getText(),BloodType.getText(),LastName.getText(),
 							FirstNametxt.getText(), Address.getText(),TelephoneNo.getText(),EmailAdd.getText(), Height.getText(),
-							Weight.getText()};
+							Weight.getText(), photolbl.getIcon().toString()};
 					model.addRow(data);
-					JOptionPane.showInputDialog(this,"yey");
+
+					JOptionPane.showMessageDialog(null,"Submitted");
+
+					Patienttxt.setText("");
+					Sextxt.setText("");
+					Agetxt.setText("");
+					BloodType.setText("");
+					LastName.setText("");
+					FirstNametxt.setText("");
+					Address.setText("");
+					TelephoneNo.setText("");
+					EmailAdd.setText("");
+					Height.setText("");
+					Weight.setText("");
 
 				}
 				//model.addRow(row);
+			}
+		});
+
+		delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(j.getSelectedRowCount() == 1){
+					model.removeRow(j.getSelectedRow());
+
+				}else{
+
+					if(model.getRowCount() == 0){
+						JOptionPane.showMessageDialog(null,"Deleted");
+						Patienttxt.setText("");
+						Sextxt.setText("");
+						Agetxt.setText("");
+						BloodType.setText("");
+						LastName.setText("");
+						FirstNametxt.setText("");
+						Address.setText("");
+						TelephoneNo.setText("");
+						EmailAdd.setText("");
+						Height.setText("");
+						Weight.setText("");
+
+					}else{
+						JOptionPane.showMessageDialog(null,"Select Row");
+					}
+				}
+			}
+		});
+
+		j.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String tblPID = model.getValueAt(j.getSelectedRow(),0).toString();
+				String tblsex = model.getValueAt(j.getSelectedRow(),1).toString();
+				String tblage = model.getValueAt(j.getSelectedRow(),2).toString();
+				String tblbloodt = model.getValueAt(j.getSelectedRow(),3).toString();
+				String tblLastN = model.getValueAt(j.getSelectedRow(),4).toString();
+				String tblFirstN = model.getValueAt(j.getSelectedRow(),5).toString();
+				String tblAddress = model.getValueAt(j.getSelectedRow(),6).toString();
+				String tblTNo = model.getValueAt(j.getSelectedRow(),7).toString();
+				String tblEadd = model.getValueAt(j.getSelectedRow(),8).toString();
+				String tblheight = model.getValueAt(j.getSelectedRow(),9).toString();
+				String tblweight = model.getValueAt(j.getSelectedRow(),10).toString();
+
+				Patienttxt.setText(tblPID);
+				Sextxt.setText(tblsex);
+				Agetxt.setText(tblage);
+				BloodType.setText(tblbloodt);
+				LastName.setText(tblLastN);
+				FirstNametxt.setText(tblFirstN);
+				Address.setText(tblAddress);
+				TelephoneNo.setText(tblTNo);
+				EmailAdd.setText(tblEadd);
+				Height.setText(tblheight);
+				Weight.setText(tblweight);
+			}
+		});
+
+
+		update.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(j.getSelectedRowCount() == 1){
+					String patientid = Patienttxt.getText();
+					String sex = Sextxt.getText();
+					String age = Agetxt.getText();
+					String bloodt = BloodType.getText();
+					String lastN = LastName.getText();
+					String firstN = FirstNametxt.getText();
+					String address = Address.getText();
+					String telNo = TelephoneNo.getText();
+					String emailadd = EmailAdd.getText();
+					String height = Height.getText();
+					String weight = Weight.getText();
+
+					model.setValueAt(patientid, j.getSelectedRow(), 0);
+					model.setValueAt(sex, j.getSelectedRow(), 1);
+					model.setValueAt(age, j.getSelectedRow(), 2);
+					model.setValueAt(bloodt, j.getSelectedRow(), 3);
+					model.setValueAt(lastN, j.getSelectedRow(), 4);
+					model.setValueAt(firstN, j.getSelectedRow(), 5);
+					model.setValueAt(address, j.getSelectedRow(), 6);
+					model.setValueAt(telNo, j.getSelectedRow(), 7);
+					model.setValueAt(emailadd, j.getSelectedRow(), 8);
+					model.setValueAt(height, j.getSelectedRow(), 9);
+					model.setValueAt(weight, j.getSelectedRow(), 10);
+
+					JOptionPane.showMessageDialog(null,"Update Successfully");
+
+
+				}
+
+			}
+		});
+
+		photo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser imgfile = new JFileChooser();
+				FileNameExtensionFilter fill = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+				imgfile.addChoosableFileFilter(fill);
+				int showOpenDialog = imgfile.showOpenDialog(null);
+
+				if(showOpenDialog == JFileChooser.APPROVE_OPTION){
+					File selectedimg = imgfile.getSelectedFile();
+					selectedimgpath = selectedimg.getAbsolutePath();
+					JOptionPane.showMessageDialog(null,selectedimgpath);
+
+					ImageIcon imgs = new ImageIcon(selectedimgpath);
+					Image imgesfit = imgs.getImage().getScaledInstance(photolbl.getWidth(),photolbl.getHeight(),Image.SCALE_SMOOTH);
+					photolbl.setIcon(new ImageIcon(imgesfit));
+
+				}
 			}
 		});
 
@@ -319,5 +507,17 @@ public class Rec_pnl extends JPanel{
 		return pnl;
 
 	}
+	private static String selectedimgpath = "";
+	public static DefaultTableModel model;
 
+
+
+}
+class myTableCellRenderer implements TableCellRenderer {
+
+	@Override
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+
+		return (Component)value;
+	}
 }
