@@ -1,18 +1,12 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
+import javax.swing.table.*;
 
 public class Rec_pnl extends JPanel{
 	public static JPanel Rec_pnl(){
@@ -20,13 +14,20 @@ public class Rec_pnl extends JPanel{
 		// pnl.setBackground(Color.WH);
 		pnl.setLayout(null);
 		pnl.setBounds(0,0,1054-200,646-50);
+
+
 		JLabel lbl = new JLabel("UwU4");
 		lbl.setBounds(0,0,100,50);
 		pnl.setBackground(Color.WHITE);
+		pnl.add(lbl);
+		lbl.setVisible(false);
+
+
+
 
 		//Center Panel
 		JPanel Panelcenter = new JPanel();
-		Panelcenter.setBounds(30,30,790,540);
+		Panelcenter.setBounds(30,50,790,540);
 		Panelcenter.setBackground(new Color(240, 233, 210));
 		pnl.add(Panelcenter);
 		Panelcenter.setLayout(null);
@@ -329,9 +330,11 @@ public class Rec_pnl extends JPanel{
 		//j.getColumn(11).setCellRenderer(new myTableCellRenderer());
 		Object[] row = new Object[0];
 		model.setColumnIdentifiers(column);
+		j.getTableHeader().setResizingAllowed(false);
+
 
 		j.setModel(model);
-		//j.getColumnModel().getColumn(11).setCellRenderer(new myTableCellRenderer());
+		j.getColumnModel().getColumn(11).setCellRenderer(new myTableCellRenderer());
 		pane.setViewportView(j);
 		Panelcenter.add(pane);
 
@@ -342,6 +345,46 @@ public class Rec_pnl extends JPanel{
 		photolbl.setBackground(Color.CYAN);
 		photolbl.setLayout(null);
 		Panelcenter.add(photolbl);
+
+
+		//Search
+		JTextPane search = new JTextPane();
+		search.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
+		search.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
+		search.setOpaque(false);
+		search.setBounds(200, 20, 200, 20);
+		search.setLayout(null);
+		pnl.add(search);
+
+		searchlbl = new JLabel("Search:");
+		searchlbl.setBounds(150,20,100,20);
+		searchlbl.setLayout(null);
+		pnl.add(searchlbl);
+
+		search.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					System.out.println();
+					TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) j.getModel()));
+					// TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) tab.getModel()));
+					sorter.setRowFilter(RowFilter.regexFilter(search.getText()));
+
+					j.setRowSorter(sorter);
+					// final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+				}
+			}
+		});
+
+		search.addFocusListener(new FocusAdapter(){
+			public void focusGained(FocusEvent e){
+				search.setText("");
+			}
+
+			public void focusLost(FocusEvent e){
+				search.setText("");
+			}
+		});
+
 
 
 
@@ -361,8 +404,12 @@ public class Rec_pnl extends JPanel{
 
 					String data[] = {Patienttxt.getText(),Sextxt.getText(),Agetxt.getText(),BloodType.getText(),LastName.getText(),
 							FirstNametxt.getText(), Address.getText(),TelephoneNo.getText(),EmailAdd.getText(), Height.getText(),
-							Weight.getText(), photolbl.getIcon().toString()};
+							Weight.getText(), photolbl.getIcon().toString() };
 					model.addRow(data);
+
+					umay = j.getRowCount();
+					lbl.setText(String.valueOf(umay));
+
 
 					JOptionPane.showMessageDialog(null,"Submitted");
 
@@ -388,8 +435,11 @@ public class Rec_pnl extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				if(j.getSelectedRowCount() == 1){
 					model.removeRow(j.getSelectedRow());
+					umay = j.getRowCount();
+					lbl.setText(String.valueOf(umay));
 
 				}else{
+
 
 					if(model.getRowCount() == 0){
 						JOptionPane.showMessageDialog(null,"Deleted");
@@ -470,6 +520,18 @@ public class Rec_pnl extends JPanel{
 					model.setValueAt(height, j.getSelectedRow(), 9);
 					model.setValueAt(weight, j.getSelectedRow(), 10);
 
+					Patienttxt.setText("");
+					Sextxt.setText("");
+					Agetxt.setText("");
+					BloodType.setText("");
+					LastName.setText("");
+					FirstNametxt.setText("");
+					Address.setText("");
+					TelephoneNo.setText("");
+					EmailAdd.setText("");
+					Height.setText("");
+					Weight.setText("");
+
 					JOptionPane.showMessageDialog(null,"Update Successfully");
 
 
@@ -495,29 +557,34 @@ public class Rec_pnl extends JPanel{
 					Image imgesfit = imgs.getImage().getScaledInstance(photolbl.getWidth(),photolbl.getHeight(),Image.SCALE_SMOOTH);
 					photolbl.setIcon(new ImageIcon(imgesfit));
 
+
 				}
 			}
 		});
-
-
-
-
-
 		// pnl.add(lbl);
 		return pnl;
 
 	}
 	private static String selectedimgpath = "";
-	public static DefaultTableModel model;
+	private static DefaultTableModel model;
+	public static JLabel searchlbl = new JLabel();
+	String search = "";
 
+	static int umay;
 
+	public int getsearch() {
+		return umay;
+	}
+	public void setSearchlbl(String search) {
+		this.search = search;
+	}
 
 }
-class myTableCellRenderer implements TableCellRenderer {
-
+class myTableCellRenderer extends DefaultTableCellRenderer{
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-
-		return (Component)value;
+		super.getTableCellRendererComponent(table, value, isSelected, hasFocus,
+				row, column);
+		return this;
 	}
 }

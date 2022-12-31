@@ -223,6 +223,10 @@ public class MainMenu extends JFrame{
 			public void actionPerformed(ActionEvent e){
 				UwU();
 				pnl_dash.setVisible(true);
+				Dash_pnl umayD = new Dash_pnl();
+				Rec_pnl umay = new Rec_pnl();
+				int label = umay.getsearch();
+				Dash_pnl.rec.setText(String.valueOf(label));
 				
 				// System.out.println(pnl_dash.isDisplayable());
 
@@ -320,6 +324,8 @@ public class MainMenu extends JFrame{
 	private JLabel lbl_title;
 
 	private JButton btn_logout;
+
+
 
 
 
