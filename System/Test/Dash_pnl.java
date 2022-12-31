@@ -9,9 +9,9 @@ public class Dash_pnl extends Rec_pnl{
 		pnl.setBounds(0,0,1054-200,646-50);
 
 
-		JLabel lbl = new JLabel("UwU1");
-		lbl.setBounds(0,0,100,50);
-		pnl.add(lbl);
+		// JLabel lbl = new JLabel("UwU1");
+		// lbl.setBounds(0,0,100,50);
+		// pnl.add(lbl);
 		pnl.setBackground(Color.WHITE);
 
 		//welcome label

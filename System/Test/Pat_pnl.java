@@ -9,15 +9,14 @@ import javax.swing.table.*;
 public class Pat_pnl extends JPanel{
 
 	private static void cls(){
-		tbx_num.setText(null);
-		tbx_name.setText(null);
-		tbx_mail.setText(null);
-		tbx_m_y.setText(null);
-		tbx_cont.setText(null);
+		tbx_pat.setText(null);
+		tbx_room.setText(null);
+		// tbx_stat.setText(null);
+		// tbx_m_y.setText(null);
 	}
 
 	private static boolean is_empty(){
-		if(tbx_num.getText().isEmpty() || tbx_name.getText().isEmpty()|| tbx_m_y.getText().isEmpty() || tbx_cont.getText().isEmpty() || tbx_mail.getText().isEmpty()){
+		if(tbx_pat.getText().isEmpty() || tbx_room.getText().isEmpty()){
 			System.out.println("one is empty");
 			return false;
 		}
@@ -31,30 +30,27 @@ public class Pat_pnl extends JPanel{
 		JPanel pnl_left_main = new JPanel();
 		JPanel pnl_top = new JPanel();	
 
-		// JTextPane tbx_num = new JTextPane();
-		// JTextPane tbx_name = new JTextPane();
-		// JTextPane tbx_mail = new JTextPane();
+		// JTextPane tbx_pat = new JTextPane();
+		// JTextPane tbx_room = new JTextPane();
+		// JTextPane tbx_stat = new JTextPane();
 		// JTextPane tbx_m_y = new JTextPane();
-		// JTextPane tbx_cont = new JTextPane();
 
 		JTextField tbx_filt = new JTextField();
 		tbx_filt.setText("Search: ");
 		JLabel lbl_filt = new JLabel("Search");
 
 
-		JLabel lbl_num = new JLabel("Number");
-		JLabel lbl_name = new JLabel("Name");
-		JLabel lbl_mail = new JLabel("Email");
-		JLabel lbl_m_y = new JLabel("Month Year");
-		JLabel lbl_cont = new JLabel("Contact no.");
+		JLabel lbl_pat = new JLabel("Patient");
+		JLabel lbl_room = new JLabel("Room No.");
+		JLabel lbl_stat = new JLabel("Status");
 
 		JButton btn_add = new JButton("Add");
 		JButton btn_del = new JButton("Delete");
 		JButton btn_update = new JButton("Update");
 
 
-		JLabel lbl_title = new JLabel("Doctors");
-		JLabel lbl_title1 = new JLabel("Accounts");
+		JLabel lbl_title = new JLabel("Patient");
+		JLabel lbl_title1 = new JLabel("Status");
 
 
 
@@ -98,25 +94,22 @@ public class Pat_pnl extends JPanel{
 
 
 		int h = 100;
-		lbl_num.setBounds(10,0,150,30);
-		lbl_num.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		tbx_num.setBounds(80,35,150,30);
+		lbl_pat.setBounds(10,0,150,30);
+		lbl_pat.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		tbx_pat.setBounds(80,35,150,30);
 
-		lbl_name.setBounds(10,80,150,30);
-		lbl_name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		tbx_name.setBounds(80,80+35,150,30);
+		lbl_room.setBounds(10,80,150,30);
+		lbl_room.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		tbx_room.setBounds(80,80+35,150,30);
 
-		lbl_mail.setBounds(10,160,150,30);
-		lbl_mail.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		tbx_mail.setBounds(80,160+35,150,30);
+		lbl_stat.setBounds(10,160,150,30);
+		lbl_stat.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 
-		lbl_m_y.setBounds(10,240,150,30);
-		lbl_m_y.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		tbx_m_y.setBounds(80,240+35,150,30);
-
-		lbl_cont.setBounds(10,320,150,30);
-		lbl_cont.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		tbx_cont.setBounds(80,320+35,150,30);
+		String stat[]={"In","Out"};
+		tbx_stat = new JComboBox(stat);
+		tbx_stat.setBounds(80,160+35,150,30);
+		
+	
 
 		int x = 80;
 		// lbl_filt.setBounds(0,400+x+80,150,30);
@@ -131,20 +124,18 @@ public class Pat_pnl extends JPanel{
 		pnl_top.add(tbx_filt);
 
 
-		pnl_left_main.add(tbx_num);
-		pnl_left_main.add(lbl_num);
+		pnl_left_main.add(tbx_pat);
+		pnl_left_main.add(lbl_pat);
 
-		pnl_left_main.add(tbx_name);
-		pnl_left_main.add(lbl_name);
+		pnl_left_main.add(tbx_room);
+		pnl_left_main.add(lbl_room);
 
-		pnl_left_main.add(tbx_mail);
-		pnl_left_main.add(lbl_mail);
+		pnl_left_main.add(tbx_stat);
+		pnl_left_main.add(lbl_stat);
 
-		pnl_left_main.add(tbx_m_y);
-		pnl_left_main.add(lbl_m_y);
+		// pnl_left_main.add(tbx_m_y);
+		// pnl_left_main.add(lbl_m_y);
 
-		pnl_left_main.add(tbx_cont);
-		pnl_left_main.add(lbl_cont);
 
 
 
@@ -179,26 +170,24 @@ public class Pat_pnl extends JPanel{
 			{ "", "", "","","" },
 		};
 
-		String[] cols = {"Number","Name","Email","Month & Year","Contact"};
+		String[] cols = {"Patient","Room No.","In","Out"};
 
-	 	DefaultTableModel model = new DefaultTableModel();
 		JTable tab = new JTable(model);
 		// tab.setBorder(BorderFactory.createMatteBorder(2,2,2,2,new Color(0, 137, 143)));
-		model.addColumn("Number");
-		model.addColumn("Name");
-		model.addColumn("Email");
-		model.addColumn("Month & Year");
-		model.addColumn("Contact");
+		model.addColumn("Patient");
+		model.addColumn("Room No.");
+		model.addColumn("In");
+		model.addColumn("Out");
 		tab.setDefaultEditor(Object.class,null);
 		tab.setBounds(30,40,1054-500,646-50);
 		pnl_main.add(tab);
 		pnl_main.add(new JScrollPane(tab));
 
 		//remove this later
-		Object[] rows = {"1111","paul gonzalodo","@gmail","jan2022","909",};
+		Object[] rows = {"Dela Cruz","209","",symbols[0],};
 		model.addRow(rows);
-		Object[] rows1 = {"001","Dela Cruz","@yahoo","jan2022","102",};
-		model.addRow(rows1);
+		// Object[] rows1 = {"001","Dela Cruz","@yahoo","jan2022","102",};
+		// model.addRow(rows1);
 
 
 		//event
@@ -206,7 +195,8 @@ public class Pat_pnl extends JPanel{
 		btn_add.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(is_empty()){
-					Object[] rows = {tbx_num.getText(),tbx_name.getText(),tbx_mail.getText(),tbx_m_y.getText(),tbx_cont.getText()};
+
+					Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 					model.addRow(rows);
 
 					cls();
@@ -229,11 +219,18 @@ public class Pat_pnl extends JPanel{
 					int i = tab.getSelectedRow();
 					if(i >= 0)
 					{
-						model.setValueAt(tbx_num.getText(), i, 0);
-						model.setValueAt(tbx_name.getText(), i, 1);
-						model.setValueAt(tbx_mail.getText(), i, 2);
-						model.setValueAt(tbx_m_y.getText(), i, 3);
-						model.setValueAt(tbx_cont.getText(), i, 4);
+						model.setValueAt(tbx_pat.getText(), i, 0);
+						model.setValueAt(tbx_room.getText(), i, 1);
+						if(tbx_stat.getSelectedItem().toString() == "In"){
+							model.setValueAt(symbols[0],i,2);
+							model.setValueAt("",i,3);
+						}
+						if(tbx_stat.getSelectedItem().toString() == "Out"){
+							model.setValueAt("",i,2);
+							model.setValueAt(symbols[0],i,3);
+						}
+						// model.setValueAt(tbx_stat.getText(), i, 2);
+						// model.setValueAt(tbx_m_y.getText(), i, 3);
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "Error");
@@ -261,21 +258,28 @@ public class Pat_pnl extends JPanel{
 		tab.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
-				String datas[] = new String[5];
+				String datas[] = new String[4];
 				int row = tab.getSelectedRow();
 
 				String value;
-				for(int i = 0; i < 5; i++){
+				for(int i = 0; i < 4; i++){
 					datas[i]=tab.getModel().getValueAt(row, i).toString();
 				}
 
 
 				// System.out.println(datas[0]);
-				tbx_num.setText(datas[0]);
-				tbx_name.setText(datas[1]);
-				tbx_mail.setText(datas[2]);
-				tbx_m_y.setText(datas[3]);
-				tbx_cont.setText(datas[4]);
+				tbx_pat.setText(datas[0]);
+				tbx_room.setText(datas[1]);
+
+				if(datas[2].isEmpty()){
+					tbx_stat.setSelectedItem("Out");
+				}
+
+				if(datas[3].isEmpty()){
+					tbx_stat.setSelectedItem("In");
+				}
+				// System.out.println(datas[3].isEmpty());
+			//	tbx_stat.setText(datas[2]);
 			}
 		});
     
@@ -305,10 +309,12 @@ public class Pat_pnl extends JPanel{
 		return pnl;
 		}
 
-		private static JTextPane tbx_num = new JTextPane();
-		private static JTextPane tbx_name = new JTextPane();
-		private static JTextPane tbx_mail = new JTextPane();
-		private static JTextPane tbx_m_y = new JTextPane();
-		private static JTextPane tbx_cont = new JTextPane();
+		private static JTextPane tbx_pat = new JTextPane();
+		private static JTextPane tbx_room = new JTextPane();
+		private static JComboBox tbx_stat = new JComboBox();
+		private static String symbols[] = {"☑","☒"};
+	 	public static DefaultTableModel model = new DefaultTableModel();
+
+		// private static JTextPane tbx_m_y = new JTextPane();
 
 }
