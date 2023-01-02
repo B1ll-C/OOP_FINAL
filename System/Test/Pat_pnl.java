@@ -28,7 +28,12 @@ public class Pat_pnl extends JPanel{
 		JPanel pnl_left = new JPanel();
 		JPanel pnl_main = new JPanel();
 		JPanel pnl_left_main = new JPanel();
-		JPanel pnl_top = new JPanel();	
+		JPanel pnl_top = new JPanel();
+
+		JLabel lbl = new JLabel("UwU4");
+		lbl.setBounds(0,0,100,50);
+		pnl.add(lbl);
+		lbl.setVisible(true);
 
 		// JTextPane tbx_pat = new JTextPane();
 		// JTextPane tbx_room = new JTextPane();
@@ -198,6 +203,8 @@ public class Pat_pnl extends JPanel{
 
 					Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 					model.addRow(rows);
+					countings = tab.getRowCount();
+					lbl.setText(String.valueOf(countings));
 
 					cls();
 
@@ -247,9 +254,12 @@ public class Pat_pnl extends JPanel{
 				int result = JOptionPane.showConfirmDialog(pnl,"Delete Data ?", "Warning",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE);
+				countings = tab.getRowCount();
+				lbl.setText(String.valueOf(countings));
 
 				if(result == JOptionPane.YES_OPTION){
 					model.removeRow(tab.getSelectedRow());
+
 				}
 			}
 		});
@@ -313,7 +323,11 @@ public class Pat_pnl extends JPanel{
 		private static JTextPane tbx_room = new JTextPane();
 		private static JComboBox tbx_stat = new JComboBox();
 		private static String symbols[] = {"☑","☒"};
+		public static int countings;
 	 	public static DefaultTableModel model = new DefaultTableModel();
+	public int getCountings() {
+		return countings;
+	}
 
 		// private static JTextPane tbx_m_y = new JTextPane();
 
