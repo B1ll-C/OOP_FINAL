@@ -121,8 +121,8 @@ public class MainMenu extends JFrame{
 			System.out.println(e);
 		}
 
-
-		lbl_priv = new JLabel("Admin");
+		Login priv = new Login();
+		lbl_priv = new JLabel(priv.p);
 		lbl_priv.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
 		lbl_priv.setForeground(new Color(255,255,255));
 		lbl_priv.setAlignmentY(Component.TOP_ALIGNMENT);

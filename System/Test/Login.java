@@ -32,8 +32,8 @@ public class Login extends JFrame{
 		
 	}
 
-	private void btn_login_click(){
-		priv.setPriv("admin");
+	private void btn_login_click(String x){
+		priv.setPriv(x);
 		p = priv.getPriv();
 		//System.out.println(priv.getPriv());
 		MainMenu m = new MainMenu();
@@ -152,7 +152,7 @@ public class Login extends JFrame{
 
 		btn_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_login_click();
+				btn_login_click(tbx_usr.getText());
 			}
 		});
 
