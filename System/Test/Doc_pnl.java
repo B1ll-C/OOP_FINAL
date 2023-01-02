@@ -35,7 +35,12 @@ public class Doc_pnl extends JPanel{
 		JPanel pnl_left = new JPanel();
 		JPanel pnl_main = new JPanel();
 		JPanel pnl_left_main = new JPanel();
-		JPanel pnl_top = new JPanel();	
+		JPanel pnl_top = new JPanel();
+
+		JLabel lbl = new JLabel("UwU4");
+		lbl.setBounds(0,0,100,50);
+		pnl.add(lbl);
+		lbl.setVisible(false);
 
 		// JTextPane tbx_num = new JTextPane();
 		// JTextPane tbx_name = new JTextPane();
@@ -215,6 +220,9 @@ public class Doc_pnl extends JPanel{
 					Object[] rows = {tbx_num.getText(),tbx_name.getText(),tbx_mail.getText(),tbx_m_y.getText(),tbx_cont.getText()};
 					model.addRow(rows);
 
+					countings = tab.getRowCount();
+					lbl.setText(String.valueOf(countings));
+
 					cls();
 
 				}
@@ -259,6 +267,8 @@ public class Doc_pnl extends JPanel{
 
 				if(result == JOptionPane.YES_OPTION){
 					model.removeRow(tab.getSelectedRow());
+					countings = tab.getRowCount();
+					lbl.setText(String.valueOf(countings));
 				}
 			}
 		});
@@ -317,5 +327,10 @@ public class Doc_pnl extends JPanel{
 		private static JTextPane tbx_mail = new JTextPane();
 		private static JTextPane tbx_m_y = new JTextPane();
 		private static JTextPane tbx_cont = new JTextPane();
+
+		public static int countings;
+	public int getCountings() {
+		return countings;
+	}
 
 }

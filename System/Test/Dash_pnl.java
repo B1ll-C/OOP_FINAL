@@ -25,8 +25,6 @@ public class Dash_pnl extends Rec_pnl{
 
 		JPanel recpanel = new JPanel();
 		recpanel.setBounds(50,150,150,200);
-		recpanel.setAlignmentY(Component.TOP_ALIGNMENT);
-		recpanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		recpanel.setBackground(new Color(103, 137, 131));
 		recpanel.setLayout(null);
 		pnl.add(recpanel);
@@ -56,6 +54,18 @@ public class Dash_pnl extends Rec_pnl{
 		docpanel.setLayout(null);
 		pnl.add(docpanel);
 
+		docss= new JLabel("Welcome!!!", SwingConstants.CENTER);
+		docss.setBounds(0,30,150,150);
+		docss.setFont(new Font("Barlow Condensed", Font.PLAIN, 100));
+		docss.setLayout(null);
+		docpanel.add(docss);
+
+		JLabel docs= new JLabel("Doctors", SwingConstants.CENTER);
+		docs.setBounds(0,0,90,50);
+		docs.setFont(new Font("Barlow Condensed", Font.PLAIN, 20));
+		docs.setLayout(null);
+		docpanel.add(docs);
+
 
 		//patpanel
 		JPanel patpanel = new JPanel();
@@ -65,6 +75,19 @@ public class Dash_pnl extends Rec_pnl{
 		patpanel.setBackground(new Color(103, 137, 131));
 		patpanel.setLayout(null);
 		pnl.add(patpanel);
+
+		patients= new JLabel("Welcome!!!", SwingConstants.CENTER);
+		patients.setBounds(0,30,150,150);
+		patients.setFont(new Font("Barlow Condensed", Font.PLAIN, 100));
+		patients.setLayout(null);
+		patpanel.add(patients);
+
+		JLabel patientss= new JLabel("Patients", SwingConstants.CENTER);
+		patientss.setBounds(0,0,90,50);
+		patientss.setFont(new Font("Barlow Condensed", Font.PLAIN, 20));
+		patientss.setLayout(null);
+		patpanel.add(patientss);
+
 
 
 
@@ -86,6 +109,8 @@ public class Dash_pnl extends Rec_pnl{
 	}
 	public static JLabel welcome= new JLabel();
 	public static JLabel rec= new JLabel();
+	public static JLabel docss= new JLabel();
+	public static JLabel patients= new JLabel();
 	static String welcom = "";
 	public String getwelcom() {
 		return welcom;
