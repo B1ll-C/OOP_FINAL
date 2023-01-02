@@ -9,6 +9,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.*;
 
 public class Rec_pnl extends JPanel{
+
+
+	public static java.awt.Component Component;
+
 	public static JPanel Rec_pnl(){
 		JPanel pnl = new JPanel();
 		// pnl.setBackground(Color.WH);
@@ -45,17 +49,28 @@ public class Rec_pnl extends JPanel{
 		//PatientPanel
 		JPanel PatientPanel = new JPanel();
 		PatientPanel.setBounds(20,40,200,50);
-		PatientPanel.setBackground(new Color(178, 178, 178));
+		PatientPanel.setBackground(new Color(240, 233, 210));
 		PatientPanel.setLayout(null);
 		Panelcenter.add(PatientPanel);
 
 		JTextPane Patienttxt = new JTextPane();
-		Patienttxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Patienttxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Patienttxt.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Patienttxt.setOpaque(false);
 		Patienttxt.setBounds(0, 30, 200, 20);
 		Patienttxt.setLayout(null);
 		PatientPanel.add(Patienttxt);
+
+		Patienttxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+					Patienttxt.setEditable(true);
+				} else {
+					Patienttxt.setEditable(false);
+				}
+			}
+		});
 
 		JLabel Patientlbl = new JLabel("Patient ID:");
 		Patientlbl.setBounds(0,0,100,20);
@@ -66,12 +81,12 @@ public class Rec_pnl extends JPanel{
 		//SexPanel
 		JPanel SexPanel = new JPanel();
 		SexPanel.setBounds(230,40,110,50);
-		SexPanel.setBackground(new Color(178, 178, 178));
+		SexPanel.setBackground(new Color(240, 233, 210));
 		SexPanel.setLayout(null);
 		Panelcenter.add(SexPanel);
 
 		JTextPane Sextxt = new JTextPane();
-		Sextxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Sextxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Sextxt.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Sextxt.setOpaque(false);
 		Sextxt.setBounds(0, 30, 110, 20);
@@ -88,17 +103,29 @@ public class Rec_pnl extends JPanel{
 		//AgePanel
 		JPanel AgePanel = new JPanel();
 		AgePanel.setBounds(345,40,110,50);
-		AgePanel.setBackground(new Color(178, 178, 178));
+		AgePanel.setBackground(new Color(240, 233, 210));
 		AgePanel.setLayout(null);
 		Panelcenter.add(AgePanel);
 
 		JTextPane Agetxt = new JTextPane();
-		Agetxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Agetxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Agetxt.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Agetxt.setOpaque(false);
 		Agetxt.setBounds(0, 30, 110, 20);
 		Agetxt.setLayout(null);
 		AgePanel.add(Agetxt);
+
+		Agetxt.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+					Agetxt.setEditable(true);
+				} else {
+					Agetxt.setEditable(false);
+				}
+			}
+
+		});
 
 		JLabel Agelbl= new JLabel("Age:");
 		Agelbl.setBounds(0,0,100,20);
@@ -109,12 +136,12 @@ public class Rec_pnl extends JPanel{
 		//BloodTypePanel
 		JPanel BloodTypePanel = new JPanel();
 		BloodTypePanel.setBounds(460,40,110,50);
-		BloodTypePanel.setBackground(new Color(178, 178, 178));
+		BloodTypePanel.setBackground(new Color(240, 233, 210));
 		BloodTypePanel.setLayout(null);
 		Panelcenter.add(BloodTypePanel);
 
 		JTextPane BloodType = new JTextPane();
-		BloodType.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		BloodType.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		BloodType.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		BloodType.setOpaque(false);
 		BloodType.setBounds(0, 30, 110, 20);
@@ -130,12 +157,12 @@ public class Rec_pnl extends JPanel{
 		//LastNamePanel
 		JPanel LastNamePanel = new JPanel();
 		LastNamePanel.setBounds(20,100,270,50);
-		LastNamePanel.setBackground(new Color(178, 178, 178));
+		LastNamePanel.setBackground(new Color(240, 233, 210));
 		LastNamePanel.setLayout(null);
 		Panelcenter.add(LastNamePanel);
 
 		JTextPane LastName = new JTextPane();
-		LastName.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		LastName.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		LastName.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		LastName.setOpaque(false);
 		LastName.setBounds(0, 30, 280, 20);
@@ -151,12 +178,12 @@ public class Rec_pnl extends JPanel{
 		//FirstNamePanel
 		JPanel FirstNamePanel = new JPanel();
 		FirstNamePanel.setBounds(300,100,270,50);
-		FirstNamePanel.setBackground(new Color(178, 178, 178));
+		FirstNamePanel.setBackground(new Color(240, 233, 210));
 		FirstNamePanel.setLayout(null);
 		Panelcenter.add(FirstNamePanel);
 
 		JTextPane FirstNametxt = new JTextPane();
-		FirstNametxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		FirstNametxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		FirstNametxt.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		FirstNametxt.setOpaque(false);
 		FirstNametxt.setBounds(0, 30, 280, 20);
@@ -172,12 +199,12 @@ public class Rec_pnl extends JPanel{
 		//AddressPanel
 		JPanel AddressPanel = new JPanel();
 		AddressPanel.setBounds(20,160,550,50);
-		AddressPanel.setBackground(new Color(178, 178, 178));
+		AddressPanel.setBackground(new Color(240, 233, 210));
 		AddressPanel.setLayout(null);
 		Panelcenter.add(AddressPanel);
 
 		JTextPane Address = new JTextPane();
-		Address.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Address.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Address.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Address.setOpaque(false);
 		Address.setBounds(0, 30, 550, 20);
@@ -193,17 +220,29 @@ public class Rec_pnl extends JPanel{
 		//TelPhoneNoPanel
 		JPanel TelPhoneNoPanel = new JPanel();
 		TelPhoneNoPanel.setBounds(20,220,180,50);
-		TelPhoneNoPanel.setBackground(new Color(178, 178, 178));
+		TelPhoneNoPanel.setBackground(new Color(240, 233, 210));
 		TelPhoneNoPanel.setLayout(null);
 		Panelcenter.add(TelPhoneNoPanel);
 
 		JTextPane TelephoneNo = new JTextPane();
-		TelephoneNo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		TelephoneNo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		TelephoneNo.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		TelephoneNo.setOpaque(false);
 		TelephoneNo.setBounds(0, 30, 200, 20);
 		TelephoneNo.setLayout(null);
 		TelPhoneNoPanel.add(TelephoneNo);
+
+		TelephoneNo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+					TelephoneNo.setEditable(true);
+				} else {
+					TelephoneNo.setEditable(false);
+				}
+			}
+
+		});
 
 		JLabel Telephonelbl = new JLabel("Telephone No.:");
 		Telephonelbl.setBounds(0,0,100,20);
@@ -214,12 +253,12 @@ public class Rec_pnl extends JPanel{
 		//EmailAddPanel
 		JPanel EmailAddPanel = new JPanel();
 		EmailAddPanel.setBounds(210,220,180,50);
-		EmailAddPanel.setBackground(new Color(178, 178, 178));
+		EmailAddPanel.setBackground(new Color(240, 233, 210));
 		EmailAddPanel.setLayout(null);
 		Panelcenter.add(EmailAddPanel);
 
 		JTextPane EmailAdd = new JTextPane();
-		EmailAdd.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		EmailAdd.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		EmailAdd.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		EmailAdd.setOpaque(false);
 		EmailAdd.setBounds(0, 30, 200, 20);
@@ -235,17 +274,29 @@ public class Rec_pnl extends JPanel{
 		//Height
 		JPanel HeightPanel = new JPanel();
 		HeightPanel.setBounds(410,220,180,50);
-		HeightPanel.setBackground(new Color(178, 178, 178));
+		HeightPanel.setBackground(new Color(240, 233, 210));
 		HeightPanel.setLayout(null);
 		Panelcenter.add(HeightPanel);
 
 		JTextPane Height = new JTextPane();
-		Height.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Height.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Height.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Height.setOpaque(false);
 		Height.setBounds(0, 30, 200, 20);
 		Height.setLayout(null);
 		HeightPanel.add(Height);
+
+		Height.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+					Height.setEditable(true);
+				} else {
+					Height.setEditable(false);
+				}
+			}
+
+		});
 
 		JLabel Heightlbl = new JLabel("Height:");
 		Heightlbl.setBounds(0,0,100,20);
@@ -256,17 +307,30 @@ public class Rec_pnl extends JPanel{
 		//WeightPanel
 		JPanel WeightPanel = new JPanel();
 		WeightPanel.setBounds(600,220,180,50);
-		WeightPanel.setBackground(new Color(178, 178, 178));
+		WeightPanel.setBackground(new Color(240, 233, 210));
 		WeightPanel.setLayout(null);
 		Panelcenter.add(WeightPanel);
 
 		JTextPane Weight = new JTextPane();
-		Weight.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		Weight.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK));
 		Weight.setFont(new Font("Barlow Condensed", Font.PLAIN, 15));
 		Weight.setOpaque(false);
 		Weight.setBounds(0, 30, 200, 20);
 		Weight.setLayout(null);
 		WeightPanel.add(Weight);
+
+
+		Weight.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+					Weight.setEditable(true);
+				} else {
+					Weight.setEditable(false);
+				}
+			}
+
+		});
 
 		JLabel Weightlbl = new JLabel("Weight:");
 		Weightlbl.setBounds(0,0,100,20);
@@ -274,7 +338,7 @@ public class Rec_pnl extends JPanel{
 		WeightPanel.add(Weightlbl);
 
 		//Button
-		JButton submit = new JButton("Submit");
+		submit = new JButton("Submit");
 		submit.setForeground(Color.WHITE);
 		submit.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
 		submit.setBorderPainted(false);
@@ -315,9 +379,9 @@ public class Rec_pnl extends JPanel{
 		JScrollPane pane = new JScrollPane();
 		pane.setBounds(20, 330, 750, 200);
 
-		JTable j = new JTable();
+		j = new JTable();
 		//j.setBounds(20, 330, 750, 200);
-		DefaultTableModel model = new DefaultTableModel(){
+		 model = new DefaultTableModel(){
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return  false;
@@ -334,13 +398,21 @@ public class Rec_pnl extends JPanel{
 
 
 		j.setModel(model);
-		j.getColumnModel().getColumn(11).setCellRenderer(new myTableCellRenderer());
+
 		pane.setViewportView(j);
 		Panelcenter.add(pane);
+		j.getColumn("Photo").setCellRenderer(new TableCellRenderer() {
+			@Override
+			public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+				table.setRowHeight(60);
+				table.setModel(j.getModel());
+				return imagelbl;
+			}
+		});
 
 
 		//Label picture
-		JLabel photolbl = new JLabel();
+		photolbl = new JLabel();
 		photolbl.setBounds(580,30,185,185);
 		photolbl.setBackground(Color.CYAN);
 		photolbl.setLayout(null);
@@ -387,29 +459,35 @@ public class Rec_pnl extends JPanel{
 
 
 
-
 		submit.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				imagelbl = new JLabel();
+				ImageIcon imgic = new ImageIcon(selectedimgpath);
+				imgsmagic = imgic.getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH);
+				imagelbl.setIcon(new ImageIcon(imgsmagic));
+
+
+
 				if( Patienttxt.getText().equals("") || Sextxt.getText().equals("") || Agetxt.getText().equals("") || BloodType.getText().equals("") ||
 				LastName.getText().equals("") || FirstNametxt.getText().equals("") || Address.getText().equals("") || TelephoneNo.getText().equals("") ||
 				EmailAdd.getText().equals("") || Height.getText().equals("") || Weight.getText().equals("")){
 					JOptionPane.showMessageDialog(null,"Fill the Fields");
 
 				}else{
-					JLabel imagelbl = new JLabel();
-					ImageIcon imgic = new ImageIcon(selectedimgpath);
-					imagelbl.setIcon(imgic);
+
+					
 
 
-					String data[] = {Patienttxt.getText(),Sextxt.getText(),Agetxt.getText(),BloodType.getText(),LastName.getText(),
-							FirstNametxt.getText(), Address.getText(),TelephoneNo.getText(),EmailAdd.getText(), Height.getText(),
-							Weight.getText(), photolbl.getIcon().toString() };
+					 data = new String[]{Patienttxt.getText(), Sextxt.getText(), Agetxt.getText(), BloodType.getText(), LastName.getText(),
+							 FirstNametxt.getText(), Address.getText(), TelephoneNo.getText(), EmailAdd.getText(), Height.getText(),
+							 Weight.getText(), imagelbl.getIcon().toString()};
 					model.addRow(data);
+
 
 					umay = j.getRowCount();
 					lbl.setText(String.valueOf(umay));
-
 
 					JOptionPane.showMessageDialog(null,"Submitted");
 
@@ -424,8 +502,10 @@ public class Rec_pnl extends JPanel{
 					EmailAdd.setText("");
 					Height.setText("");
 					Weight.setText("");
-
+					photolbl.setIcon(null);
 				}
+
+
 				//model.addRow(row);
 			}
 		});
@@ -496,6 +576,13 @@ public class Rec_pnl extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(j.getSelectedRowCount() == 1){
+
+					ImageIcon imgic = new ImageIcon(selectedimgpath);
+					imgsmagic = imgic.getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH);
+					imagelbl = new JLabel();
+					imagelbl.setIcon(new ImageIcon(imgsmagic));
+
+
 					String patientid = Patienttxt.getText();
 					String sex = Sextxt.getText();
 					String age = Agetxt.getText();
@@ -543,7 +630,7 @@ public class Rec_pnl extends JPanel{
 		photo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser imgfile = new JFileChooser();
+				JFileChooser imgfile = new JFileChooser("C:\\Users\\asus\\Pictures\\Saved Pictures");
 				FileNameExtensionFilter fill = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
 				imgfile.addChoosableFileFilter(fill);
 				int showOpenDialog = imgfile.showOpenDialog(null);
@@ -553,8 +640,8 @@ public class Rec_pnl extends JPanel{
 					selectedimgpath = selectedimg.getAbsolutePath();
 					JOptionPane.showMessageDialog(null,selectedimgpath);
 
-					ImageIcon imgs = new ImageIcon(selectedimgpath);
-					Image imgesfit = imgs.getImage().getScaledInstance(photolbl.getWidth(),photolbl.getHeight(),Image.SCALE_SMOOTH);
+					 imgs = new ImageIcon(selectedimgpath);
+					 imgesfit = imgs.getImage().getScaledInstance(photolbl.getWidth(),photolbl.getHeight(),Image.SCALE_SMOOTH);
 					photolbl.setIcon(new ImageIcon(imgesfit));
 
 
@@ -565,12 +652,21 @@ public class Rec_pnl extends JPanel{
 		return pnl;
 
 	}
+	public static ImageIcon imgs;
+	public static Image imgesfit;
 	private static String selectedimgpath = "";
-	private static DefaultTableModel model;
+	public static DefaultTableModel model;
 	public static JLabel searchlbl = new JLabel();
 	String search = "";
 
+	public static JTable j;
+	public static JLabel photolbl;
+	public static JLabel imagelbl;
+	public static JLabel imagelbl1;
+	public  static JButton submit;
+	public static String[] data;
 	static int umay;
+	public static Image imgsmagic;
 
 	public int getsearch() {
 		return umay;
@@ -580,11 +676,17 @@ public class Rec_pnl extends JPanel{
 	}
 
 }
-class myTableCellRenderer extends DefaultTableCellRenderer{
+ /*class myTableCellRenderer extends DefaultTableCellRenderer{
+
+
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-		super.getTableCellRendererComponent(table, value, isSelected, hasFocus,
-				row, column);
-		return this;
+		super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+		TableColumn tb = Rec_pnl.j.getColumn("Photo");
+		tb.setMaxWidth(60);
+		tb.setMinWidth(60);
+		//return Rec_pnl.imagelbl;
+		return (Component) value;
 	}
-}
+}*/
