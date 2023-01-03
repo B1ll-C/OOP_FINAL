@@ -22,9 +22,11 @@ public class Dash_pnl extends Rec_pnl{
 		pnl.add(welcome);
 
 		//recpanel
+		int x = 90;
+
 
 		JPanel recpanel = new JPanel();
-		recpanel.setBounds(50,150,150,200);
+		recpanel.setBounds(50+x,150,150,200);
 		recpanel.setBackground(new Color(103, 137, 131));
 		recpanel.setLayout(null);
 		pnl.add(recpanel);
@@ -47,7 +49,7 @@ public class Dash_pnl extends Rec_pnl{
 		//docpanel
 
 		JPanel docpanel = new JPanel();
-		docpanel.setBounds(250,150,150,200);
+		docpanel.setBounds(250+x,150,150,200);
 		docpanel.setAlignmentY(Component.TOP_ALIGNMENT);
 		docpanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		docpanel.setBackground(new Color(103, 137, 131));
@@ -69,7 +71,7 @@ public class Dash_pnl extends Rec_pnl{
 
 		//patpanel
 		JPanel patpanel = new JPanel();
-		patpanel.setBounds(450,150,150,200);
+		patpanel.setBounds(450+x,150,150,200);
 		patpanel.setAlignmentY(Component.TOP_ALIGNMENT);
 		patpanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		patpanel.setBackground(new Color(103, 137, 131));
