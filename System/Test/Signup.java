@@ -17,10 +17,10 @@ import java.io.IOException;
 
 import javax.swing.BorderFactory;
 
-public class Login extends JFrame{
+public class Signup extends JFrame{
 	
 
-	public Login(){
+	public Signup(){
 		initComponents(); 
 	}
 
@@ -110,6 +110,16 @@ public class Login extends JFrame{
 
 
 
+		name = new JLabel("Full Name");
+		name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		name.setBounds(200, 235-75-75, 300, 33);
+		pnl_right.add(name);
+
+		cont = new JLabel("Contact No.");
+		cont.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		cont.setBounds(200, 235-75, 300, 33);
+		pnl_right.add(cont);
+
 		usr = new JLabel("Username");
 		usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 		usr.setBounds(200, 235, 300, 33);
@@ -121,7 +131,21 @@ public class Login extends JFrame{
 		pnl_right.add(pass);
 
 
-		tbx_usr = new JTextPane();
+		tbx_name = new JTextField();
+		tbx_name.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		tbx_name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		tbx_name.setOpaque(false);
+		tbx_name.setBounds(200, 270-70-75, 300, 33);
+		pnl_right.add(tbx_name);
+
+		tbx_cont = new JTextField();
+		tbx_cont.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
+		tbx_cont.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
+		tbx_cont.setOpaque(false);
+		tbx_cont.setBounds(200, 270-70, 300, 33);
+		pnl_right.add(tbx_cont);
+
+		tbx_usr = new JTextField();
 		tbx_usr.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		tbx_usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 		tbx_usr.setOpaque(false);
@@ -146,14 +170,14 @@ public class Login extends JFrame{
 		tbx_passw.setBounds(200, 340, 300, 33);
 		pnl_right.add(tbx_passw);
 
-		btn_login = new JButton("Login");
-		btn_login.setForeground(Color.WHITE);
-		btn_login.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_login.setBorderPainted(false);
-		btn_login.setBorder(null);
-		btn_login.setBackground(new Color(21, 115, 111));
-		btn_login.setBounds(400, 390, 100, 33);
-		pnl_right.add(btn_login);
+		// btn_login = new JButton("Login");
+		// btn_login.setForeground(Color.WHITE);
+		// btn_login.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		// btn_login.setBorderPainted(false);
+		// btn_login.setBorder(null);
+		// btn_login.setBackground(new Color(21, 115, 111));
+		// btn_login.setBounds(400, 390, 100, 33);
+		// pnl_right.add(btn_login);
 
 		btn_signin = new JButton("Sign in");
 		btn_signin.setForeground(Color.WHITE);
@@ -165,17 +189,22 @@ public class Login extends JFrame{
 		pnl_right.add(btn_signin);
 
 
-		btn_login.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_login_click(tbx_usr.getText(),tbx_passw.getText());
-			}
-		});
-
+		// btn_login.addActionListener(new ActionListener() {
+		// 	public void actionPerformed(ActionEvent e) {
+		// 		btn_login_click(tbx_usr.getText(),tbx_passw.getText());
+		// 	}
+		// });
 		btn_signin.addActionListener(new ActionListener() {
-			public void	actionPerformed(ActionEvent e){
-				Signup s = new Signup();
-				s.setVisible(true);
+			public void actionPerformed(ActionEvent e){
+
+				if(tbx_usr.getText().isEmpty() || tbx_passw.getText().isEmpty() || tbx_name.getText().isEmpty() || tbx_cont.getText().isEmpty()){
+					JOptionPane.showMessageDialog(null, "Fill All Textbox", "Log in", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+				JOptionPane.showMessageDialog(null, "New Account", "Signup", JOptionPane.INFORMATION_MESSAGE);
+				Login l = new Login();	
+				l.setVisible(true);
 				dispose();
+				}
 			}
 		});
 
@@ -212,11 +241,15 @@ public class Login extends JFrame{
 	private JPanel pnl_left;
 	private JPanel pnl_right;
 
-	private JTextPane tbx_usr;
+	private JTextField tbx_name;
+	private JTextField tbx_cont;
+	private JTextField tbx_usr;	
 	private JPasswordField tbx_passw;
 
 	private JLabel usr;
 	private JLabel pass;
+	private JLabel name;
+	private JLabel cont;
 
 	private JButton btn_login;
 	private JButton btn_signin;
