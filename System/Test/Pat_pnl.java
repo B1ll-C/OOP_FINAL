@@ -30,10 +30,10 @@ public class Pat_pnl extends JPanel{
 		JPanel pnl_left_main = new JPanel();
 		JPanel pnl_top = new JPanel();
 
-		JLabel lbl = new JLabel("UwU4");
-		lbl.setBounds(0,0,100,50);
-		pnl.add(lbl);
-		lbl.setVisible(true);
+		// JLabel lbl = new JLabel("UwU4");
+		// lbl.setBounds(0,0,100,50);
+		// pnl.add(lbl);
+		// lbl.setVisible(true);
 
 		// JTextPane tbx_pat = new JTextPane();
 		// JTextPane tbx_room = new JTextPane();
@@ -204,7 +204,7 @@ public class Pat_pnl extends JPanel{
 					Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 					model.addRow(rows);
 					countings = tab.getRowCount();
-					lbl.setText(String.valueOf(countings));
+					// lbl.setText(String.valueOf(countings));
 
 					cls();
 
@@ -255,7 +255,7 @@ public class Pat_pnl extends JPanel{
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE);
 				countings = tab.getRowCount();
-				lbl.setText(String.valueOf(countings));
+				// lbl.setText(String.valueOf(countings));
 
 				if(result == JOptionPane.YES_OPTION){
 					model.removeRow(tab.getSelectedRow());

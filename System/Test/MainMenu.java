@@ -36,6 +36,9 @@ public class MainMenu extends JFrame{
 		}
 
 	private void logout(){
+		// Login.setVisible(true)
+		Login l = new Login();
+		l.setVisible(true);
 		this.dispose();
 	}
 
@@ -113,7 +116,7 @@ public class MainMenu extends JFrame{
 			ImageIcon icon = new ImageIcon(image);
 			JLabel lbl_logo = new JLabel("");
 			lbl_logo.setIcon(icon);
-			lbl_logo.setBounds(70,5,size,size);
+			lbl_logo.setBounds(50,5,size,size);
 			pnl_usr.add(lbl_logo);
 		
 		}
@@ -121,13 +124,14 @@ public class MainMenu extends JFrame{
 			System.out.println(e);
 		}
 
+		// Login priv = new Login();
+		lbl_priv = new JLabel(Login.p);
+		lbl_priv.setFont(new Font("Barlow Condensed", Font.BOLD, 24));
+		// lbl_priv.setForeground(new Color(255,255,255));
 
-		lbl_priv = new JLabel("Admin");
-		lbl_priv.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		lbl_priv.setForeground(new Color(255,255,255));
 		lbl_priv.setAlignmentY(Component.TOP_ALIGNMENT);
 		lbl_priv.setAlignmentX(Component.LEFT_ALIGNMENT);
-		lbl_priv.setBounds(20,100,100,30);
+		lbl_priv.setBounds(20,110,100,30);
 		pnl_usr.add(lbl_priv);
 		// lbl_priv.setBounds()
 
@@ -169,14 +173,14 @@ public class MainMenu extends JFrame{
 		btn_rec.setBounds(25, 210+y, 150, 33);
 		pnl_left.add(btn_rec);
 
-		btn_rep = new JButton("Reports");
-		btn_rep.setForeground(Color.WHITE);
-		btn_rep.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
-		btn_rep.setBorderPainted(false);
-		btn_rep.setBorder(null);
-		btn_rep.setBackground(new Color(21, 115, 111));
-		btn_rep.setBounds(25, 270+y, 150, 33);
-		pnl_left.add(btn_rep);
+		// btn_rep = new JButton("Reports");
+		// btn_rep.setForeground(Color.WHITE);
+		// btn_rep.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		// btn_rep.setBorderPainted(false);
+		// btn_rep.setBorder(null);
+		// btn_rep.setBackground(new Color(21, 115, 111));
+		// btn_rep.setBounds(25, 270+y, 150, 33);
+		// pnl_left.add(btn_rep);
 
 		//pnl left end
 
@@ -274,15 +278,15 @@ public class MainMenu extends JFrame{
 		});
 
 
-		btn_rep.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				UwU();
-				pnl_rep.setVisible(true);
+		// btn_rep.addActionListener(new ActionListener(){
+		// 	public void actionPerformed(ActionEvent e){
+		// 		UwU();
+		// 		pnl_rep.setVisible(true);
 
-				System.out.println("rep");
+		// 		System.out.println("rep");
 
-			}
-		});
+		// 	}
+		// });
 
 		btn_logout.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){

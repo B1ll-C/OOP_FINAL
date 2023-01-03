@@ -32,13 +32,17 @@ public class Login extends JFrame{
 		
 	}
 
-	private void btn_login_click(){
-		priv.setPriv("admin");
+	private void btn_login_click(String usr, String passw){
+		if(usr.equals(passw)){
+		priv.setPriv(usr);
 		p = priv.getPriv();
 		//System.out.println(priv.getPriv());
 		MainMenu m = new MainMenu();
 		m.setVisible(true);
 		this.dispose();
+		}  else{
+			 JOptionPane.showMessageDialog(null, "Wrong Username or Password");
+		}
 
 	}
 
@@ -93,6 +97,17 @@ public class Login extends JFrame{
 		pnl_right.setBounds(400,0,1054-400,646);
 		contentPane.add(pnl_right);
 		pnl_right.setLayout(null);
+
+
+		btn_exit = new JButton("Exit");
+		btn_exit.setForeground(Color.WHITE);
+		btn_exit.setFont(new Font("Barlow Condensed", Font.BOLD, 18));
+		btn_exit.setBorderPainted(false);
+		btn_exit.setBorder(null);
+		btn_exit.setBackground(new Color(21, 115, 111));
+		btn_exit.setBounds(500,10 , 100, 33);
+		pnl_right.add(btn_exit);
+
 
 
 		usr = new JLabel("Username");
@@ -152,7 +167,14 @@ public class Login extends JFrame{
 
 		btn_login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_login_click();
+				btn_login_click(tbx_usr.getText(),tbx_passw.getText());
+			}
+		});
+
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// btn_login_click(tbx_usr.getText());
+				dispose();
 			}
 		});
 
@@ -190,6 +212,8 @@ public class Login extends JFrame{
 
 	private JButton btn_login;
 	private JButton btn_signin;
+
+	private JButton btn_exit;
 
 	private Image logo;
 
