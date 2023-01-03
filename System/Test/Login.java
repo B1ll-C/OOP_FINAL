@@ -171,6 +171,14 @@ public class Login extends JFrame{
 			}
 		});
 
+		btn_signin.addActionListener(new ActionListener() {
+			public void	actionPerformed(ActionEvent e){
+				Signup s = new Signup();
+				s.setVisible(true);
+				dispose();
+			}
+		});
+
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// btn_login_click(tbx_usr.getText());
