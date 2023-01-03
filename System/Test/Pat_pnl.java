@@ -190,7 +190,7 @@ public class Pat_pnl extends JPanel{
 
 		//remove this later
 		Object[] rows = {"Dela Cruz","209","",symbols[0],};
-		model.addRow(rows);
+		// model.addRow(rows);
 		// Object[] rows1 = {"001","Dela Cruz","@yahoo","jan2022","102",};
 		// model.addRow(rows1);
 
@@ -201,17 +201,71 @@ public class Pat_pnl extends JPanel{
 			public void actionPerformed(ActionEvent e){
 				if(is_empty()){
 
+					
+					// lbl.setText(String.valueOf(countings));
+
+
+				int c =0;
+				int row = tab.getRowCount();
+				if(row ==0){
+						Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
+						model.addRow(rows);
+							System.out.println("Adding");
+							return;
+							 }
+				for(int i = 0; i < row; i++){
+					// String datas[] = new String[4];
+					// datas=tab.getModel().getValueAt(i, ).toString();
+					String room = tab.getModel().getValueAt(i,1).toString();
+					boolean stat = false;
+					// System.out.println(tab.getModel().getValueAt(i,2).toString().isEmpty());
+// 
+					if(tab.getModel().getValueAt(i,2).toString().isEmpty()){
+						stat = true;
+					} 
+
+
+					System.out.println(room);
+					
+
+						// countings = tab.getRowCount();
+					
+					if(tbx_room.getText().equals(room)){
+						if(stat){
+							// System.out.println("Adding");
+							// Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
+							// model.addRow(rows);
+							// // countings = tab.getRowCount();
+							// return;
+						}else{
+							System.out.println("occupied");
+							c+=1;
+
+						}
+						// c++;
+					}
+
+
+
+					
+
+					// table.get
+				}
+
+				System.out.println(c);
+				if(c==0){
 					Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 					model.addRow(rows);
 					countings = tab.getRowCount();
-					// lbl.setText(String.valueOf(countings));
+					System.out.println("Adding1");
 
+				} 
+				
+				
+					}
 					cls();
-
 				}
-				
-				
-			}
+
 		});
 
 		btn_update.addActionListener(new ActionListener(){
@@ -320,7 +374,7 @@ public class Pat_pnl extends JPanel{
 		}
 
 		private static JTextPane tbx_pat = new JTextPane();
-		private static JTextPane tbx_room = new JTextPane();
+		private static JTextField tbx_room = new JTextField();
 		private static JComboBox tbx_stat = new JComboBox();
 		private static String symbols[] = {"☑","☒"};
 		public static int countings;
