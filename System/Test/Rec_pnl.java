@@ -1,16 +1,20 @@
 	import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import javax.swing.JButton;
+	import java.util.HashSet;
+	import java.util.Set;
+	import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+	import javax.swing.event.TableModelEvent;
+	import javax.swing.event.TableModelListener;
+	import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.*;
 
 public class Rec_pnl extends JPanel{
 
-
+	public static  Set<Integer> ids = new HashSet<>();
 	public static java.awt.Component Component;
 
 	public static JPanel Rec_pnl(){
@@ -406,9 +410,31 @@ public class Rec_pnl extends JPanel{
 			public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 				table.setRowHeight(60);
 				table.setModel(j.getModel());
-				return imagelbl;
+				return (java.awt.Component) value;
 			}
 		});
+		j.getModel().addTableModelListener(new TableModelListener() {
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				if (e.getType() == TableModelEvent.INSERT) {
+					TableModel model = (TableModel) e.getSource();
+					int row = e.getFirstRow();
+					int column = e.getColumn();
+					if (column == 0) { // ID column
+						int id = (int) model.getValueAt(row, column);
+						if (ids.contains(id)) {
+							// Display an error message or take other appropriate action
+						} else {
+							ids.add(id);
+						}
+					}
+				}
+			}
+
+
+		});
+
+
 
 
 		//Label picture
@@ -470,21 +496,29 @@ public class Rec_pnl extends JPanel{
 
 
 
+
+
 				if( Patienttxt.getText().equals("") || Sextxt.getText().equals("") || Agetxt.getText().equals("") || BloodType.getText().equals("") ||
 				LastName.getText().equals("") || FirstNametxt.getText().equals("") || Address.getText().equals("") || TelephoneNo.getText().equals("") ||
 				EmailAdd.getText().equals("") || Height.getText().equals("") || Weight.getText().equals("")){
+
 					JOptionPane.showMessageDialog(null,"Fill the Fields");
 
-				}else{
-
-					
 
 
-					 data = new String[]{Patienttxt.getText(), Sextxt.getText(), Agetxt.getText(), BloodType.getText(), LastName.getText(),
-							 FirstNametxt.getText(), Address.getText(), TelephoneNo.getText(), EmailAdd.getText(), Height.getText(),
-							 Weight.getText(), imagelbl.getIcon().toString()};
-					model.addRow(data);
+				} else{
 
+					for (int i = 0; i < j.getRowCount(); i++) {
+						String firstName = (String) j.getValueAt(i, 0);
+						if (!firstName.equals(Patienttxt.getText())) {
+							JOptionPane.showMessageDialog(null, "match");
+						}
+
+					}
+
+					model.addRow(new Object[]{Patienttxt.getText(), Sextxt.getText(), Agetxt.getText(), BloodType.getText(), LastName.getText(),
+							FirstNametxt.getText(), Address.getText(), TelephoneNo.getText(), EmailAdd.getText(), Height.getText(),
+							Weight.getText(), imagelbl});
 
 					umay = j.getRowCount();
 					lbl.setText(String.valueOf(umay));
