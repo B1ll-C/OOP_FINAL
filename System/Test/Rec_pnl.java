@@ -1,16 +1,20 @@
 	import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import javax.swing.JButton;
+	import java.util.HashSet;
+	import java.util.Set;
+	import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+	import javax.swing.event.TableModelEvent;
+	import javax.swing.event.TableModelListener;
+	import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.*;
 
 public class Rec_pnl extends JPanel{
 
-
+	public static  Set<Integer> ids = new HashSet<>();
 	public static java.awt.Component Component;
 
 	public static JPanel Rec_pnl(){
@@ -406,9 +410,32 @@ public class Rec_pnl extends JPanel{
 			public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 				table.setRowHeight(60);
 				table.setModel(j.getModel());
-				return imagelbl;
+
+				return (java.awt.Component) value;
 			}
 		});
+		j.getModel().addTableModelListener(new TableModelListener() {
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				if (e.getType() == TableModelEvent.INSERT) {
+					TableModel model = (TableModel) e.getSource();
+					int row = e.getFirstRow();
+					int column = e.getColumn();
+					if (column == 0) { // ID column
+						int id = (int) model.getValueAt(row, column);
+						if (ids.contains(id)) {
+							// Display an error message or take other appropriate action
+						} else {
+							ids.add(id);
+						}
+					}
+				}
+			}
+
+
+		});
+
+
 
 
 		//Label picture
@@ -468,41 +495,52 @@ public class Rec_pnl extends JPanel{
 				imgsmagic = imgic.getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH);
 				imagelbl.setIcon(new ImageIcon(imgsmagic));
 
+				for ( i = 0; i < j.getRowCount(); i++) {
+					patientsID = (String) j.getValueAt(i, 0);
+					if (patientsID.equals(Patienttxt.getText())) {
+						JOptionPane.showMessageDialog(null, "match");
+						model.removeRow(j.getRowCount());
+
+					}
+
+				}
+
+
+
 
 
 				if( Patienttxt.getText().equals("") || Sextxt.getText().equals("") || Agetxt.getText().equals("") || BloodType.getText().equals("") ||
 				LastName.getText().equals("") || FirstNametxt.getText().equals("") || Address.getText().equals("") || TelephoneNo.getText().equals("") ||
 				EmailAdd.getText().equals("") || Height.getText().equals("") || Weight.getText().equals("")){
+
 					JOptionPane.showMessageDialog(null,"Fill the Fields");
 
-				}else{
-
-					
 
 
-					 data = new String[]{Patienttxt.getText(), Sextxt.getText(), Agetxt.getText(), BloodType.getText(), LastName.getText(),
-							 FirstNametxt.getText(), Address.getText(), TelephoneNo.getText(), EmailAdd.getText(), Height.getText(),
-							 Weight.getText(), imagelbl.getIcon().toString()};
-					model.addRow(data);
+				} else{
 
+						model.addRow(new Object[]{Patienttxt.getText(), Sextxt.getText(), Agetxt.getText(), BloodType.getText(), LastName.getText(),
+								FirstNametxt.getText(), Address.getText(), TelephoneNo.getText(), EmailAdd.getText(), Height.getText(),
+								Weight.getText(), imagelbl});
 
-					umay = j.getRowCount();
-					lbl.setText(String.valueOf(umay));
+						umay = j.getRowCount();
+						lbl.setText(String.valueOf(umay));
 
-					JOptionPane.showMessageDialog(null,"Submitted");
+						JOptionPane.showMessageDialog(null,"Submitted");
 
-					Patienttxt.setText("");
-					Sextxt.setText("");
-					Agetxt.setText("");
-					BloodType.setText("");
-					LastName.setText("");
-					FirstNametxt.setText("");
-					Address.setText("");
-					TelephoneNo.setText("");
-					EmailAdd.setText("");
-					Height.setText("");
-					Weight.setText("");
-					photolbl.setIcon(null);
+						Patienttxt.setText("");
+						Sextxt.setText("");
+						Agetxt.setText("");
+						BloodType.setText("");
+						LastName.setText("");
+						FirstNametxt.setText("");
+						Address.setText("");
+						TelephoneNo.setText("");
+						EmailAdd.setText("");
+						Height.setText("");
+						Weight.setText("");
+						photolbl.setIcon(null);
+
 				}
 
 
@@ -556,6 +594,11 @@ public class Rec_pnl extends JPanel{
 				String tblEadd = model.getValueAt(j.getSelectedRow(),8).toString();
 				String tblheight = model.getValueAt(j.getSelectedRow(),9).toString();
 				String tblweight = model.getValueAt(j.getSelectedRow(),10).toString();
+				JLabel labJT = (JLabel) model.getValueAt(j.getSelectedRow(), 11);
+
+				ImageIcon iconImage = (ImageIcon) labJT.getIcon();
+				Image imgJL = iconImage.getImage().getScaledInstance(photolbl.getWidth(), photolbl.getHeight(), Image.SCALE_SMOOTH);
+				photolbl.setIcon(new ImageIcon(imgJL));
 
 				Patienttxt.setText(tblPID);
 				Sextxt.setText(tblsex);
@@ -568,6 +611,7 @@ public class Rec_pnl extends JPanel{
 				EmailAdd.setText(tblEadd);
 				Height.setText(tblheight);
 				Weight.setText(tblweight);
+
 			}
 		});
 
@@ -594,6 +638,7 @@ public class Rec_pnl extends JPanel{
 					String emailadd = EmailAdd.getText();
 					String height = Height.getText();
 					String weight = Weight.getText();
+					String pot = photolbl.getIcon().toString();
 
 					model.setValueAt(patientid, j.getSelectedRow(), 0);
 					model.setValueAt(sex, j.getSelectedRow(), 1);
@@ -606,6 +651,10 @@ public class Rec_pnl extends JPanel{
 					model.setValueAt(emailadd, j.getSelectedRow(), 8);
 					model.setValueAt(height, j.getSelectedRow(), 9);
 					model.setValueAt(weight, j.getSelectedRow(), 10);
+					JLabel labJT = (JLabel) model.getValueAt(j.getSelectedRow(), 11);
+					labJT.setIcon(new ImageIcon(imgsmagic));
+
+
 
 					Patienttxt.setText("");
 					Sextxt.setText("");
@@ -662,8 +711,11 @@ public class Rec_pnl extends JPanel{
 	public static JTable j;
 	public static JLabel photolbl;
 	public static JLabel imagelbl;
+	public static int i;
 	public static JLabel imagelbl1;
 	public  static JButton submit;
+	public static String  patientsID;
+	public static String  patientsIDs;
 	public static String[] data;
 	static int umay;
 	public static Image imgsmagic;
