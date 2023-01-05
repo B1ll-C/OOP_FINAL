@@ -239,6 +239,7 @@ public class Pat_pnl extends JPanel{
 							// return;
 						}else{
 							System.out.println("occupied");
+							JOptionPane.showMessageDialog(null, "Room occupied");
 							c+=1;
 
 						}
