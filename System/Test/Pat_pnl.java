@@ -211,6 +211,8 @@ public class Pat_pnl extends JPanel{
 						Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 						model.addRow(rows);
 							System.out.println("Adding");
+							countings = tab.getRowCount();
+
 							return;
 							 }
 				for(int i = 0; i < row; i++){
@@ -235,7 +237,7 @@ public class Pat_pnl extends JPanel{
 							// System.out.println("Adding");
 							// Object[] rows = {tbx_pat.getText(),tbx_room.getText(),symbols[0],""};
 							// model.addRow(rows);
-							// // countings = tab.getRowCount();
+							// countings = tab.getRowCount();
 							// return;
 						}else{
 							System.out.println("occupied");
@@ -259,6 +261,8 @@ public class Pat_pnl extends JPanel{
 					model.addRow(rows);
 					countings = tab.getRowCount();
 					System.out.println("Adding1");
+					// countings = tab.getRowCount();
+					System.out.println(tab.getRowCount());
 
 				} 
 				
