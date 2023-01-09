@@ -498,7 +498,7 @@ public class Rec_pnl extends JPanel{
 				for ( i = 0; i < j.getRowCount(); i++) {
 					patientsID = (String) j.getValueAt(i, 0);
 					if (patientsID.equals(Patienttxt.getText())) {
-						JOptionPane.showMessageDialog(null, "match");
+						JOptionPane.showMessageDialog(null, "data already inserted");
 						model.removeRow(j.getRowCount());
 
 					}
