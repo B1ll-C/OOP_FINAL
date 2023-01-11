@@ -110,24 +110,26 @@ public class Signup extends JFrame{
 
 
 
+		int x = 30;
+
 		name = new JLabel("Full Name");
 		name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		name.setBounds(200, 235-75-75, 300, 33);
+		name.setBounds(200, 235-75-75+x, 300, 33);
 		pnl_right.add(name);
 
 		cont = new JLabel("Contact No.");
 		cont.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		cont.setBounds(200, 235-75, 300, 33);
+		cont.setBounds(200, 235-75+x, 300, 33);
 		pnl_right.add(cont);
 
 		usr = new JLabel("Username");
 		usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		usr.setBounds(200, 235, 300, 33);
+		usr.setBounds(200, 235+x, 300, 33);
 		pnl_right.add(usr);
 
 		pass = new JLabel("Password");
 		pass.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
-		pass.setBounds(200, 310, 300, 33);
+		pass.setBounds(200, 310+x, 300, 33);
 		pnl_right.add(pass);
 
 
@@ -135,21 +137,21 @@ public class Signup extends JFrame{
 		tbx_name.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		tbx_name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 		tbx_name.setOpaque(false);
-		tbx_name.setBounds(200, 270-70-75, 300, 33);
+		tbx_name.setBounds(200, 270-70-75+x, 300, 33);
 		pnl_right.add(tbx_name);
 
 		tbx_cont = new JTextField();
 		tbx_cont.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		tbx_cont.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 		tbx_cont.setOpaque(false);
-		tbx_cont.setBounds(200, 270-70, 300, 33);
+		tbx_cont.setBounds(200, 270-70+x, 300, 33);
 		pnl_right.add(tbx_cont);
 
 		tbx_usr = new JTextField();
 		tbx_usr.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE));
 		tbx_usr.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
 		tbx_usr.setOpaque(false);
-		tbx_usr.setBounds(200, 270, 300, 33);
+		tbx_usr.setBounds(200, 270+x, 300, 33);
 		pnl_right.add(tbx_usr);
 		tbx_usr.addFocusListener(new FocusAdapter(){
 			public void focusGained(java.awt.event.FocusEvent evt) {
