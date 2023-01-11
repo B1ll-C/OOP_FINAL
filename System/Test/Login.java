@@ -32,7 +32,7 @@ public class Login extends JFrame{
 		
 	}
 
-	private void btn_login_click(String usr, String passw){
+	public void btn_login_click(String usr, String passw){
 		if(usr.equals(passw)){
 		priv.setPriv(usr);
 		p = priv.getPriv();
@@ -90,6 +90,9 @@ public class Login extends JFrame{
 		//leftside end
 
 		//right side
+
+
+
 		pnl_right = new JPanel();
 		pnl_right.setAlignmentY(Component.TOP_ALIGNMENT);
 		pnl_right.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -97,6 +100,15 @@ public class Login extends JFrame{
 		pnl_right.setBounds(400,0,1054-400,646);
 		contentPane.add(pnl_right);
 		pnl_right.setLayout(null);
+
+
+		acc_title = new JLabel("Access Accounts");
+		// acc_title.setForeground(Color.);
+		acc_title.setFont(new Font("Barlow Condensed", Font.PLAIN, 30));
+		acc_title.setBounds(200,150,300,70);
+		acc_title.setBorder(BorderFactory.createMatteBorder(0, 2,0 , 0, Color.WHITE));
+		pnl_right.add(acc_title);
+
 
 
 		btn_exit = new JButton("Exit");
@@ -217,6 +229,8 @@ public class Login extends JFrame{
 
 	private JLabel usr;
 	private JLabel pass;
+
+	private JLabel acc_title;
 
 	private JButton btn_login;
 	private JButton btn_signin;
