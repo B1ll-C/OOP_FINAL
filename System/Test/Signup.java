@@ -110,7 +110,7 @@ public class Signup extends JFrame{
 
 
 
-		int x = 30;
+		int x = 0;
 
 		name = new JLabel("Full Name");
 		name.setFont(new Font("Barlow Condensed", Font.PLAIN, 25));
